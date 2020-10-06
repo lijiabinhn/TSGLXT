@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ljb.dao.StudentMapper">
+    <select id="findByUserName" parameterType="String" resultType="com.ljb.pojo.Student">
+  		select stu_id as stuId,stu_sn as stuSn,stu_cid as stuCid,stu_pw as stuPw,photo,sex,remark from student where stu_sn = #{username}
+  	</select>
+    <select id="findList" parameterType="Map" resultType="com.ljb.pojo.Student">
+        select stu_id as stuId,stu_sn as stuSn,stu_cid as stuCid,stu_pw as stuPw,photo,sex,remark from student where 1=1
+        <if test="username !=null">
+            and stu_sn like #{username}
+        </if>
+        <if test="clazzId >0">
+            and stu_cid = #{clazzId}
+        </if>
+        limit #{offset},#{pageSize}
+    </select>
+    <select id="findAll" resultType="com.ljb.pojo.Student">
+  		select stu_id as stuId,stu_sn as stuSn,stu_cid as stuCid,stu_pw as stuPw,photo as photo,sex as sex,remark as remark from student
+  	</select>
+    <select id="getTotal" parameterType="Map" resultType="Integer">
+        select count(stu_id) from student where 1=1<!--stu_sn like #{stuSn}-->
+        <if test="name !=null">
+            and stu_sn like #{username}
+        </if>
+        <if test="gradeId !=null">
+            and stu_cid = #{clazzId}
+        </if>
+    </select>
+    <insert id="add" parameterType="com.ljb.pojo.Student">
+  		insert into student(stu_sn,stu_cid,stu_pw,photo,sex,remark) values(#{stuSn},#{stuCid},#{stuPw},#{photo},#{sex},#{remark})
+  	</insert>
+    <update id="edit" parameterType="com.ljb.pojo.Student">
+  		update student set stu_sn = #{username},stu_cid = #{clazzId},stu_pw=#{password},sex=#{sex},photo=#{photo},remark = #{remark} where stu_id = #{stuId}
+  	</update>
+    <update id="delete" parameterType="String">
+  		delete from student where stu_id in (${value})
+  	</update>
+</mapper>

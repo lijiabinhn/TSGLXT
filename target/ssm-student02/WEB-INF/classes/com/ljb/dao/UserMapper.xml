@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ljb.dao.UserMapper">
+	<!--<resultMap id="resultUser" type="com.ljb.pojo.User">
+		<result column="id" property="userId" jdbcType="INTEGER"/>
+		<result column="username" property="userName" jdbcType="VARCHAR"/>
+		<result column="password" property="userPassword" jdbcType="VARCHAR"/>
+	</resultMap>-->
+    <select id="findByUserName" parameterType="String" resultType="com.ljb.pojo.User">
+  		select user_id as userId,user_name as userName,user_pw as userPw from userinfo where user_name = #{username} limit 1
+  	</select>
+    <select id="findList" parameterType="Map" resultType="com.ljb.pojo.User">
+  		select user_id as userId,user_name as userName,user_pw as userPw from userinfo where user_name like #{username} limit #{offset},#{pageSize}
+  	</select>
+    <select id="getTotal" parameterType="Map" resultType="Integer">
+  		select count(user_id) from userinfo where user_name like #{username}
+  	</select>
+    <insert id="add" parameterType="com.ljb.pojo.User">
+  		insert into userinfo(user_id,user_name,user_pw) values(null,#{userName},#{userPw})
+  	</insert>
+   <update id="edit" parameterType="com.ljb.pojo.User">
+  		update userinfo set user_name = #{userName},user_pw = #{userPw} where user_id = #{userId}
+  	</update>
+    <update id="delete" parameterType="String">
+  		delete from userinfo where user_id in (${value})
+  	</update>
+</mapper>
