@@ -11,7 +11,7 @@ import java.util.Map;
 
 @Service
 public class StudentServiceImpl implements StudentService {
-    @Autowired(required = false)
+    @Autowired//(required = false)
     private StudentMapper studentMapper;
 
     public Student findByUserName(String username) {
@@ -38,7 +38,7 @@ public class StudentServiceImpl implements StudentService {
         return studentMapper.findList(queryMap);
     }
 
-    @Override
+
     public List<Student> findAll() {
         return studentMapper.findAll();
     }

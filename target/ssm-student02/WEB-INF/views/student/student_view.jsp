@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,7 +12,7 @@
     <script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="../easyui/js/validateExtends.js"></script>
     <script type="text/javascript">
-        var clazzList = ${clazzListJson};
+        <%--var clazzList = ${clazzListJson};--%>
         $(function() {
             var table;
 
@@ -33,23 +33,19 @@
                 sortOrder:'DESC',
                 remoteSort: false,
                 columns: [[
-                   /* {field:'chk',checkbox: true,width:50},
-                    {field:'cid',title:'ID',width:50, sortable: true},
-                    {field:'claGid',title:'年级ID',width:50, sortable: true},
-                    {field:'cname',title:'班级名称',width:50, sortable: true},
-                    {field:'remark',title:'备注',width:50, sortable: true},*/
+                    {field:'chk',checkbox: true,width:50},
                     {field:'stuId',title:'ID',width:50, sortable: true},
                     {field:'stuSn',title:'姓名',width:150, sortable: true},
-                    {field:'stuCid',title:'所属班级',width:150, sortable: true,
-                        formatter:function(value,index,row){
+                    {field:'stuCid',title:'所属班级',width:150, sortable: true},
+                       /* formatter:function(value,index,row){
                             for(var i=0;i<clazzList.length;i++){
-                                if(clazzList[i].cid == value){
-                                    return clazzList[i].cname;
+                                if(clazzList[i].clazzId == value){
+                                    return clazzList[i].name;
                                 }
                             }
                             return value;
                         }
-                    },
+                    },*/
                     {field:'stuPw',title:'密码',width:150},
                     {field:'photo',title:'头像',width:100,
                         formatter:function(value,index,row){
@@ -95,7 +91,7 @@
                 } else{
                     var ids = [];
                     $(selectRows).each(function(i, row){
-                        ids[i] = row.id;
+                        ids[i] = row.stuId;
                     });
                     $.messager.confirm("消息提醒", "确定删除学生信息？", function(r){
                         if(r){
@@ -231,7 +227,7 @@
                 onBeforeOpen: function(){
                     var selectRow = $("#dataList").datagrid("getSelected");
                     //设置值
-                    $("#edit-id").val(selectRow.id);
+                    $("#edit-id").val(selectRow.stuId);
                     $("#edit_username").textbox('setValue', selectRow.stuSn);
                     $("#edit_clazzId").combobox('setValue', selectRow.stuCid);
                     $("#edit_sex").combobox('setValue', selectRow.sex);
@@ -246,7 +242,7 @@
             //搜索按钮
             $("#search-btn").click(function(){
                 $('#dataList').datagrid('reload',{
-                    name:$("#search-name").textbox('getValue'),
+                    username:$("#search-name").textbox('getValue'),
                     clazzId:$("#search-clazz-id").combobox('getValue')
                 });
             });
@@ -289,24 +285,25 @@
 </table>
 <!-- 工具栏 -->
 <div id="toolbar">
-    <c:if test="${userType == 1}">
+<%--    <c:if test="${userType == 1}">--%>
         <div style="float: left;"><a id="add" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加</a></div>
         <div style="float: left;" class="datagrid-btn-separator"></div>
-    </c:if>
+<%--    </c:if>--%>
     <div style="float: left;"><a id="edit" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">修改</a></div>
     <div style="float: left;" class="datagrid-btn-separator"></div>
     <div>
-        <c:if test="${userType == 1}">
+<%--        <c:if test="${userType == 1}">--%>
             <a id="delete" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-some-delete',plain:true">删除</a>
-        </c:if>
+<%--        </c:if>--%>
         学生名：<input id="search-name" class="easyui-textbox" />
-        所属班级：
+        班级编号：<input id="search-clazz-id" class="easyui-combobox" style="width: 150px;" />
+        <%--所属班级：
         <select id="search-clazz-id" class="easyui-combobox" style="width: 150px;">
             <option value="">全部</option>
             <c:forEach items="${ clazzList}" var="clazz">
                 <option value="${clazz.cid }">${clazz.cname }</option>
             </c:forEach>
-        </select>
+        </select>--%>
         <a id="search-btn" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true">搜索</a>
     </div>
 </div>
@@ -348,11 +345,12 @@
             <tr >
                 <td>所属班级:</td>
                 <td>
-                    <select id="add_clazzId"  class="easyui-combobox" style="width: 200px;" name="stuCid" data-options="required:true, missingMessage:'请选择所属班级'">
+                    <input id="add_clazzId"  class="easyui-textbox" style="width: 200px; height: 30px;" type="int" name="stuCid" data-options="required:true, missingMessage:'请选择所属班级'"  />
+                    <%--<select id="add_clazzId"  class="easyui-combobox" style="width: 200px;" name="stuCid" data-options="required:true, missingMessage:'请选择所属班级'">
                         <c:forEach items="${ clazzList}" var="clazz">
                             <option value="${clazz.cid }">${clazz.cname }</option>
                         </c:forEach>
-                    </select>
+                    </select>--%>
                 </td>
             </tr>
             <tr >
@@ -393,7 +391,7 @@
         </table>
     </form>
     <form id="editForm" method="post">
-        <input type="hidden" name="id" id="edit-id">
+        <input type="hidden" name="stuId" id="edit-id">
         <table id="editTable2" cellpadding="8">
             <input id="edit_photo" type="hidden" name="photo" value="../photo/student.jpg"  />
             <tr >
@@ -402,20 +400,22 @@
                     <input id="edit_username"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="stuSn" data-options="required:true, missingMessage:'请填写学生姓名'"  />
                 </td>
             </tr>
+
+            <tr >
+                <td>所属班级:</td>
+                <td>
+<%--                    <input id="edit_clazzId"  class="easyui-textbox" style="width: 200px; height: 30px;" type="int" name="stuCid" data-options="required:true, missingMessage:'请填写班级id'"  />--%>
+                    <select id="edit_clazzId"  class="easyui-combobox" style="width: 200px;" type="int" name="stuCid" data-options="required:true, missingMessage:'请选择所属班级'">
+                        <c:forEach items="${clazzList}" var="clazz">
+                            <option value="${clazz.cid}">${clazz.cid}</option>
+                        </c:forEach>
+                    </select>
+                </td>
+            </tr>
             <tr >
                 <td>登录密码:</td>
                 <td>
                     <input id="edit_password"  class="easyui-textbox" style="width: 200px; height: 30px;" type="password" name="stuPw" data-options="required:true, missingMessage:'请填写登录密码'"  />
-                </td>
-            </tr>
-            <tr >
-                <td>所属班级:</td>
-                <td>
-                    <select id="edit_clazzId"  class="easyui-combobox" style="width: 200px;" name="stuCid" data-options="required:true, missingMessage:'请选择所属班级'">
-                        <c:forEach items="${ clazzList}" var="clazz">
-                            <option value="${clazz.cid }">${clazz.cname }</option>
-                        </c:forEach>
-                    </select>
                 </td>
             </tr>
             <tr >

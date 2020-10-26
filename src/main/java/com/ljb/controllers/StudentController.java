@@ -36,23 +36,27 @@ public class StudentController {
     @RequestMapping(path="/list",method= RequestMethod.GET)
     public ModelAndView list(ModelAndView model){
         model.setViewName("student/student_view");
-        List<Clazz> clazzList=clazzService.findAll();
+       /* List<Clazz> clazzList=clazzService.findAll();
+        System.out.println(clazzList);
         model.addObject("clazzList",clazzList );
-        model.addObject("clazzListJson", JSONArray.fromObject(clazzList));
+        model.addObject("clazzListJson", JSONArray.fromObject(clazzList));*/
+       /* List<Student> clazzList=studentService.findAll();
+        model.addObject("clazzList",clazzList );
+        model.addObject("clazzListJson", JSONArray.fromObject(clazzList));*/
         return model;
     }
     @RequestMapping(path="/get_list",method=RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> getList(
-            @RequestParam(value="name",required=false,defaultValue="") String name,
+            @RequestParam(value="username",required=false,defaultValue="") String username,
             @RequestParam(value="clazzId",required=false) Integer clazzId,
             HttpServletRequest request,
             Page page
     ){
         Map<String, Object> ret = new HashMap<String, Object>();
         Map<String, Object> queryMap = new HashMap<String, Object>();
-        queryMap.put("username", "%"+name+"%");
-        Object attribute = request.getSession().getAttribute("userType");
+        queryMap.put("username", "%"+username+"%");
+        /*Object attribute = request.getSession().getAttribute("userType");
         if("2".equals(attribute.toString())){
 
             Student loginedStudent = (Student)request.getSession().getAttribute("user");
@@ -60,7 +64,7 @@ public class StudentController {
         }
         if(clazzId != 0){
             queryMap.put("clazzId", clazzId);
-        }
+        }*/
         queryMap.put("offset", page.getOffset());
         queryMap.put("pageSize", page.getRows());
         ret.put("rows", studentService.findList(queryMap));
@@ -114,32 +118,34 @@ public class StudentController {
         Map<String, String> ret = new HashMap<String, String>();
         if(StringUtils.isEmpty(student.getStuSn())){
             ret.put("type", "error");
-            ret.put("msg", "ѧ����������Ϊ�գ�");
+            ret.put("msg", "请输入用户名！");
             return ret;
         }
         if(StringUtils.isEmpty(student.getStuPw())){
             ret.put("type", "error");
-            ret.put("msg", "ѧ����¼���벻��Ϊ�գ�");
+            ret.put("msg", "请输入密码！");
             return ret;
         }
         if(student.getStuCid() == 0){
             ret.put("type", "error");
-            ret.put("msg", "��ѡ�������༶��");
+            ret.put("msg", "请输入班级Id");
             return ret;
         }
-        if(isExist(student.getStuSn(), student.getStuId())){
+        /*if(isExist(student.getStuSn(), student.getStuId())){
             ret.put("type", "error");
-            ret.put("msg", "�������Ѵ��ڣ�");
+            ret.put("msg", "该用户已存在!");
             return ret;
-        }
-        //student.setSn(StringUtil.generateSn("S", ""));
-        if(studentService.edit(student) <= 0){
+        }*/
+       // student.setStuSn(StringUtil.generateSn("S", ""));
+        int edit = studentService.edit(student);
+
+        if(edit<0){
             ret.put("type", "error");
-            ret.put("msg", "ѧ�����ʧ�ܣ�");
+            ret.put("msg", "执行出错！");
             return ret;
         }
         ret.put("type", "success");
-        ret.put("msg", "ѧ���޸ĳɹ���");
+        ret.put("msg", "修改成功！");
         return ret;
     }
 
@@ -168,7 +174,7 @@ public class StudentController {
             ret.put("msg", "班级ID不能为空！");
             return ret;
         }
-        if(isExist(student.getStuSn(), 0)){
+        if(isExist(student.getStuSn(), student.getStuId())){
             ret.put("type", "error");
             ret.put("msg", "该用户已存在！");
             return ret;

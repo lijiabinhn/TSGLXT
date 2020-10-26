@@ -14,37 +14,20 @@ public class Student {
     private String sex;
     private String remark;
 
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-
-
     public Integer getStuId() {
         return stuId;
     }
 
     public void setStuId(Integer stuId) {
         this.stuId = stuId;
+    }
+
+    public String getStuSn() {
+        return stuSn;
+    }
+
+    public void setStuSn(String stuSn) {
+        this.stuSn = stuSn;
     }
 
     public Integer getStuCid() {
@@ -63,12 +46,28 @@ public class Student {
         this.stuPw = stuPw;
     }
 
-    public String getStuSn() {
-        return stuSn;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setStuSn(String stuSn) {
-        this.stuSn = stuSn;
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     @Override
