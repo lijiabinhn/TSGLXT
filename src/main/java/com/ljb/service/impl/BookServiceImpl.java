@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+
 @Service
 public class BookServiceImpl implements BookService {
 
@@ -15,5 +17,15 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> findAll() {
         return bookMapper.findAll();
+    }
+
+    @Override
+    public List<Book> findList(Map<String, Object> queryMap) {
+        return null;
+    }
+
+    @Override
+    public int getTotal(Map<String, Object> queryMap) {
+        return 0;
     }
 }

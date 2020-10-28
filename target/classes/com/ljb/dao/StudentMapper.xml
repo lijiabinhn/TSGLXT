@@ -10,7 +10,7 @@
   		insert into student(stu_sn,stu_cid,stu_pw,stu_p,stu_sex,stu_m) values(#{stuSn},#{stuCid},#{stuPw},#{photo},#{sex},#{remark})
   	</insert>
 
-    <update id="edit" parameterType="com.ljb.pojo.Clazz">
+    <update id="edit" parameterType="com.ljb.pojo.StuOperation">
   		update student set stu_sn = #{stuSn},stu_cid = #{stuCid},stu_pw = #{stuPw},stu_p = #{photo},stu_sex=#{sex},stu_m = #{remark} where stu_id = #{stuId}
   	</update>
     <update id="delete" parameterType="String">

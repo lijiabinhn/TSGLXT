@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>年级列表</title>
+    <title>图书列表</title>
     <link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="../easyui/css/demo.css">
@@ -17,25 +17,29 @@
 
             //datagrid初始化
             $('#dataList').datagrid({
-                title:'年级列表',
+                title:'图书列表',
                 iconCls:'icon-more',//图标
                 border: true,
                 collapsible:false,//是否可折叠的
                 fit: true,//自动大小
                 method: "post",
                 url:"get_list?t="+new Date().getTime(),
-                idField:'id',
+                idField:'bookNo',
                 singleSelect:false,//是否单选
                 pagination:true,//分页控件
                 rownumbers:true,//行号
-                sortName:'id',
+                sortName:'bookNo',
                 sortOrder:'DESC',
                 remoteSort: false,
                 columns: [[
                     {field:'chk',checkbox: true,width:50},
-                    {field:'id',title:'ID',width:50, sortable: true},
-                    {field:'name',title:'年级名',width:150, sortable: true},
-                    {field:'remark',title:'备注',width:300},
+                    {field:'bookNo',title:'ID',width:50, sortable: true},
+                    {field:'bookName',title:'书名',width:150, sortable: true},
+                    {field:'Author',title:'作者',width:150, sortable: true},
+                    {field:'Publish',title:'出版社',width:150, sortable: true},
+                    {field:'buyTime',title:'购买时间',width:150, sortable: true},
+                    {field:'isBorrow',title:'是否借阅',width:150, sortable: true},
+                    {field:'isOrder',title:'是否预约',width:300},
                 ]],
                 toolbar: "#toolbar"
             });
@@ -208,9 +212,13 @@
                 onBeforeOpen: function(){
                     var selectRow = $("#dataList").datagrid("getSelected");
                     //设置值
-                    $("#edit-id").val(selectRow.id);
-                    $("#edit_name").textbox('setValue', selectRow.name);
-                    $("#edit_remark").textbox('setValue', selectRow.remark);
+                    $("#edit-id").val(selectRow.bookNo);
+                    $("#edit_name").textbox('setValue', selectRow.bookName);
+                    $("#edit_name").textbox('setValue', selectRow.Author);
+                    $("#edit_name").textbox('setValue', selectRow.Publish);
+                    $("#edit_name").textbox('setValue', selectRow.buyTime);
+                    $("#edit_name").textbox('setValue', selectRow.isBorrow);
+                    $("#edit_remark").textbox('setValue', selectRow.isBorrow);
                 }
             });
 
@@ -240,7 +248,7 @@
         <c:if test="${userType == 1}">
             <a id="delete" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-some-delete',plain:true">删除</a>
         </c:if>
-        年级名：<input id="search-name" class="easyui-textbox" />
+        书名：<input id="search-name" class="easyui-textbox" />
         <a id="search-btn" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true">搜索</a>
     </div>
 </div>
@@ -250,14 +258,40 @@
     <form id="addForm" method="post">
         <table id="addTable" cellpadding="8">
             <tr >
-                <td>年级名:</td>
+                <td>书名:</td>
                 <td>
-                    <input id="add_name"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="name" data-options="required:true, missingMessage:'请填写年级名'"  />
+                    <input id="add_name"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="bookName" data-options="required:true, missingMessage:'请填写书名'"  />
                 </td>
             </tr>
-            <tr>
-                <td>备注:</td>
-                <td><input id="add_remark" style="width: 256px; height: 180px;" class="easyui-textbox" type="text" name="remark" data-options="multiline:true"  /></td>
+            <tr >
+                <td>作者:</td>
+                <td>
+                    <input id="add_author"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="Author" data-options="required:true, missingMessage:'请填写作者'"  />
+                </td>
+            </tr>
+            <tr >
+                <td>出版社:</td>
+                <td>
+                    <input id="add_publish"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="Publish" data-options="required:true, missingMessage:'请填写出版社'"  />
+                </td>
+            </tr>
+            <tr >
+                <td>购买时间:</td>
+                <td>
+                    <input id="add_buyTime"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="buyTime" data-options="required:true, missingMessage:'请填写购买时间'"  />
+                </td>
+            </tr>
+            <tr >
+                <td>是否借阅:</td>
+                <td>
+                    <input id="add_isBorrow"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="isBorrow" data-options="required:true, missingMessage:'请填写是否借阅'"  />
+                </td>
+            </tr>
+            <tr >
+                <td>是否预约:</td>
+                <td>
+                    <input id="add_Order"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="isOrder" data-options="required:true, missingMessage:'请填写是否预约'"  />
+                </td>
             </tr>
         </table>
     </form>
@@ -270,14 +304,40 @@
         <input type="hidden" name="id" id="edit-id">
         <table id="editTable" border=0 cellpadding="8" >
             <tr >
-                <td>年级名:</td>
+                <td>书名:</td>
                 <td>
-                    <input id="edit_name"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="name" data-options="required:true, missingMessage:'请填写年级名'"  />
+                    <input id="edit_name"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="bookName" data-options="required:true, missingMessage:'请填写书名'"  />
                 </td>
             </tr>
-            <tr>
-                <td>备注:</td>
-                <td><input id="edit_remark" style="width: 256px; height: 180px;" class="easyui-textbox" type="text" name="remark" data-options="multiline:true"  /></td>
+            <tr >
+                <td>作者:</td>
+                <td>
+                    <input id="edit_author"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="Author" data-options="required:true, missingMessage:'请填写作者'"  />
+                </td>
+            </tr>
+            <tr >
+                <td>出版社:</td>
+                <td>
+                    <input id="edit_publish"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="Publish" data-options="required:true, missingMessage:'请填写出版社'"  />
+                </td>
+            </tr>
+            <tr >
+                <td>购买时间:</td>
+                <td>
+                    <input id="edit_buyTime"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="buyTime" data-options="required:true, missingMessage:'请填写购买时间'"  />
+                </td>
+            </tr>
+            <tr >
+                <td>是否借阅:</td>
+                <td>
+                    <input id="edit_isBorrow"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="isBorrow" data-options="required:true, missingMessage:'请填写是否借阅'"  />
+                </td>
+            </tr>
+            <tr >
+                <td>是否预约:</td>
+                <td>
+                    <input id="edit_Order"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="isOrder" data-options="required:true, missingMessage:'请填写是否预约'"  />
+                </td>
             </tr>
         </table>
     </form>

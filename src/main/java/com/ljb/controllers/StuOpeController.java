@@ -2,6 +2,7 @@ package com.ljb.controllers;
 
 import com.ljb.page.Page;
 import com.ljb.service.BookService;
+import com.ljb.service.StuOpeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,18 +15,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping(path = "/book")
-public class BookController {
+@RequestMapping(path = "/studentOperation")
+public class StuOpeController {
+
     @Autowired
-    private BookService bookService;
+    private StuOpeService stuOpeService;
 
-
-    @RequestMapping(path="/list",method= RequestMethod.GET)
+    @RequestMapping(path = "/list")
     public ModelAndView list(ModelAndView model){
-        model.setViewName("book/book_view");
+        model.setViewName("studentOperation/studentOperation_view");
+       /* List<grade> findAll = gradeService.findAll();
+        model.addObject("gradeList",findAll );
+        model.addObject("gradeListJson", JSONArray.fromObject(findAll));*/
         return model;
     }
-    @RequestMapping(path="/get_list",method=RequestMethod.POST)
+    @RequestMapping(path="/get_list",method= RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> getList(
             @RequestParam(value="username",required=false,defaultValue="") String username,
@@ -36,8 +40,8 @@ public class BookController {
         queryMap.put("username", "%"+username+"%");
         queryMap.put("offset", page.getOffset());
         queryMap.put("pageSize", page.getRows());
-        ret.put("rows", bookService.findList(queryMap));
-        ret.put("total", bookService.getTotal(queryMap));
+        ret.put("rows", stuOpeService.findList(queryMap));
+        ret.put("total", stuOpeService.getTotal(queryMap));
         return ret;
     }
 }

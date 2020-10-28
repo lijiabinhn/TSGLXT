@@ -1,5 +1,10 @@
 package com.ljb.pojo;
 
+import lombok.Data;
+import org.springframework.stereotype.Component;
+
+@Data
+@Component
 public class Ticket {
     private int ticNo;
     private int stuNo;

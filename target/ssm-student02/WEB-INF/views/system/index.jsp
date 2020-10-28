@@ -28,17 +28,17 @@
                 },
                 {"menuid":"3","icon":"","menuname":"图书管理",
                     "menus":[
-                        {"menuid":"31","menuname":"图书列表","icon":"icon-world","url":"../grade/list"},
+                        {"menuid":"31","menuname":"图书列表","icon":"icon-world","url":"../book/list"},
                     ]
                 },
                 {"menuid":"4","icon":"","menuname":"用户操作管理",
                     "menus":[
-                        {"menuid":"41","menuname":"用户操作列表","icon":"icon-house","url":"../clazz/list"},
+                        {"menuid":"41","menuname":"用户操作列表","icon":"icon-house","url":"../studentOperation/list"},
                     ]
                 },
                 {"menuid":"5","icon":"","menuname":"交纳罚款管理",
                     "menus":[
-                        {"menuid":"51","menuname":"交纳罚款列表","icon":"icon-house","url":"../clazz/list"},
+                        {"menuid":"51","menuname":"交纳罚款列表","icon":"icon-house","url":"../ticket/list"},
                     ]
                 },
 
