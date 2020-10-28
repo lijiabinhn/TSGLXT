@@ -110,7 +110,7 @@ public class SystemController {
         if (type == 1) {
             //管理员登录
             User user = userService.findByUserName(username);
-            System.out.println(user);
+            //System.out.println(user);
             if (user == null) {
                 ret.put("type", "error");
                 ret.put("msg", "该用户不存在");

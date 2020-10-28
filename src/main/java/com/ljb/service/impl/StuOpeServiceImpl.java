@@ -1,19 +1,19 @@
 package com.ljb.service.impl;
 
-import com.ljb.dao.ClazzMapper;
-import com.ljb.pojo.Clazz;
-import com.ljb.service.ClazzService;
+import com.ljb.dao.StuOpeMapper;
+import com.ljb.pojo.StuOperation;
+import com.ljb.service.StuOpeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ClazzServiceImpl implements ClazzService {
+public class StuOpeServiceImpl implements StuOpeService {
     @Autowired(required = false)
-    private ClazzMapper clazzMapper;
+    private StuOpeMapper clazzMapper;
     @Override
-    public List<Clazz> findAll() {
+    public List<StuOperation> findAll() {
         return clazzMapper.findAll();
     }
 }

@@ -21,19 +21,24 @@
                         {"menuid":"11","menuname":"用户列表","icon":"icon-user-teacher","url":"../user/list"}
                     ]
                 },
-                {"menuid":"3","icon":"","menuname":"年级信息管理",
-                    "menus":[
-                        {"menuid":"31","menuname":"年级列表","icon":"icon-world","url":"../grade/list"},
-                    ]
-                },
-                {"menuid":"4","icon":"","menuname":"班级信息管理",
-                    "menus":[
-                        {"menuid":"41","menuname":"班级列表","icon":"icon-house","url":"../clazz/list"},
-                    ]
-                },
-                {"menuid":"2","icon":"","menuname":"学生信息管理",
+                {"menuid":"2","icon":"","menuname":"学生用户管理",
                     "menus":[
                         {"menuid":"21","menuname":"学生列表","icon":"icon-user-student","url":"../student/list"},
+                    ]
+                },
+                {"menuid":"3","icon":"","menuname":"图书管理",
+                    "menus":[
+                        {"menuid":"31","menuname":"图书列表","icon":"icon-world","url":"../book/list"},
+                    ]
+                },
+                {"menuid":"4","icon":"","menuname":"用户操作管理",
+                    "menus":[
+                        {"menuid":"41","menuname":"用户操作列表","icon":"icon-house","url":"../studentOperation/list"},
+                    ]
+                },
+                {"menuid":"5","icon":"","menuname":"交纳罚款管理",
+                    "menus":[
+                        {"menuid":"51","menuname":"交纳罚款列表","icon":"icon-house","url":"../ticket/list"},
                     ]
                 },
 

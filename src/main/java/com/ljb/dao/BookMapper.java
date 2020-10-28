@@ -1,10 +1,10 @@
 package com.ljb.dao;
 
-import com.ljb.pojo.grade;
+import com.ljb.pojo.Book;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
-public interface GradeMapper {
-    public List<grade> findAll();
+public interface BookMapper {
+    public List<Book> findAll();
 }

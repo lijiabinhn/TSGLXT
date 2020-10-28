@@ -1,13 +1,10 @@
 package com.ljb.controllers;
 
-import com.ljb.dao.UserMapper;
 import com.ljb.page.Page;
-import com.ljb.pojo.Clazz;
 import com.ljb.pojo.Student;
-import com.ljb.service.ClazzService;
+import com.ljb.service.StuOpeService;
 import com.ljb.service.StudentService;
 import com.ljb.util.StringUtil;
-import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -30,8 +27,6 @@ public class StudentController {
 
     @Autowired
     private StudentService studentService;
-    @Autowired
-    private ClazzService clazzService;
 
     @RequestMapping(path="/list",method= RequestMethod.GET)
     public ModelAndView list(ModelAndView model){

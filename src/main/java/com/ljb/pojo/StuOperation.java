@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-public class Clazz {
+public class StuOperation {
     private Integer cid;
     private Integer claGid;
     private String cname;

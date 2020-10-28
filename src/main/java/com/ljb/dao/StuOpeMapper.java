@@ -1,12 +1,12 @@
 package com.ljb.dao;
 
-import com.ljb.pojo.Clazz;
+import com.ljb.pojo.StuOperation;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface ClazzMapper {
+public interface StuOpeMapper {
     //public int add(Clazz clazz);
-    public List<Clazz> findAll();
+    public List<StuOperation> findAll();
 }

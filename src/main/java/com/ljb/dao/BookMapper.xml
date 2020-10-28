@@ -2,11 +2,11 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ljb.dao.GradeMapper">
+<mapper namespace="com.ljb.dao.BookMapper">
    <!-- <select id="findList" parameterType="Map" resultType="Grade">
   		select * from grade where name like #{name} limit #{offset},#{pageSize}
   	</select>-->
-    <select id="findAll" resultType="com.ljb.pojo.grade">
+    <select id="findAll" resultType="com.ljb.pojo.Book">
   		select grade_id as gid,grade_name as gname,grade_remark as remark from grade
   	</select>
     <!--<select id="getTotal" parameterType="Map" resultType="Integer">
