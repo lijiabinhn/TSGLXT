@@ -3,16 +3,16 @@ package com.ljb.pojo;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
-@Data
 @Component
+@Data
 public class Ticket {
     private int ticNo;
     private int stuNo;
     private String stuName;
     private String stuClazz;//前面的班级ID用的是int
     private String bookName;
-    private String ticTime;//违期时长
-    private String ticMoney;//应付金额
+    private int ticTime;//违期时长
+    private float ticMoney;//应付金额
     private String isMoney;//是否付款
     private String payWay;//付款方式
 
@@ -56,19 +56,19 @@ public class Ticket {
         this.bookName = bookName;
     }
 
-    public String getTicTime() {
+    public int getTicTime() {
         return ticTime;
     }
 
-    public void setTicTime(String ticTime) {
+    public void setTicTime(int ticTime) {
         this.ticTime = ticTime;
     }
 
-    public String getTicMoney() {
+    public float getTicMoney() {
         return ticMoney;
     }
 
-    public void setTicMoney(String ticMoney) {
+    public void setTicMoney(float ticMoney) {
         this.ticMoney = ticMoney;
     }
 

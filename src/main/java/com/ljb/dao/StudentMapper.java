@@ -1,7 +1,7 @@
 package com.ljb.dao;
 
 import com.ljb.pojo.Student;
-import com.ljb.pojo.User;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

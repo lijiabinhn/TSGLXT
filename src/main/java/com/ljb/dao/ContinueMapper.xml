@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ljb.dao.ContinueMapper">
+    <select id="findList" parameterType="Map" resultType="com.ljb.pojo.Continue">
+  		select CT_NO as ctNo,StuNO as stuNo,StuName as stuName,BookNO as bookNo,BookName as bookName,DelayTime as delayTime from continuetimes where BookName like #{username} limit #{offset},#{pageSize}
+  	</select>
+    <!--<select id="findAll" resultType="com.ljb.pojo.Borrow">
+  		select BookNO as bookNo,BookName as bookName,Author as Author,Publishment as Publish,ButTime as buyTime,Borrowed as isBorrow,Ordered as isOrder from stuborrow
+  	</select>-->
+    <select id="getTotal" parameterType="Map" resultType="Integer">
+  		select count(CT_NO) from continuetimes where BookName like #{username}
+  	</select>
+    <update id="add" parameterType="com.ljb.pojo.Continue">
+  		insert into continuetimes(CT_NO,StuNO,StuName,BookNO,BookName,DelayTime) values(null,#{stuNo},#{stuName},#{bookNo},#{bookName},#{delayTime})
+  	</update>
+    <update id="edit" parameterType="com.ljb.pojo.Continue">
+  		update continuetimes set StuNO = #{stuNo},StuName = #{stuName},BookNO = #{bookNo},BookName = #{bookName},DelayTime = #{delayTime} where CT_NO = #{ctNo}
+  	</update>
+    <update id="delete" parameterType="String">
+  		delete from continuetimes where CT_NO in (${value})
+  	</update>
+</mapper>

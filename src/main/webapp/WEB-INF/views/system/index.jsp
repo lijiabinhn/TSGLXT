@@ -33,7 +33,11 @@
                 },
                 {"menuid":"4","icon":"","menuname":"用户操作管理",
                     "menus":[
-                        {"menuid":"41","menuname":"用户操作列表","icon":"icon-house","url":"../studentOperation/list"},
+                        {"menuid":"41","menuname":"借阅列表","icon":"icon-house","url":"../operation/borrowList"},
+                        {"menuid":"42","menuname":"归还列表","icon":"icon-house","url":"../operation/returnList"},
+                        {"menuid":"43","menuname":"挂失列表","icon":"icon-house","url":"../operation/loseList"},
+                        {"menuid":"44","menuname":"续借列表","icon":"icon-house","url":"../operation/continueList"},
+                        {"menuid":"45","menuname":"预约列表","icon":"icon-house","url":"../operation/orderList"},
                     ]
                 },
                 {"menuid":"5","icon":"","menuname":"交纳罚款管理",

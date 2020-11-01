@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ljb.dao.OrderMapper">
+    <select id="findList" parameterType="Map" resultType="com.ljb.pojo.Order">
+  		select YNO as yNo,Y_StuName as stuName,Y_StuNo as stuNo,Y_class as stuClazz,Y_BookNo as bookNo,Y_book as bookName,Y_time as orderTime,IsBorrow as isBorrow from yuyue where Y_StuName like #{username} limit #{offset},#{pageSize}
+  	</select>
+    <select id="getTotal" parameterType="Map" resultType="Integer">
+  		select count(YNO) from yuyue where Y_StuName like #{username}
+  	</select>
+    <update id="add" parameterType="com.ljb.pojo.Order">
+  		insert into yuyue(yNo,Y_StuName,Y_StuNo,Y_class,Y_BookNo,Y_book,Y_time,IsBorrow) values(null,#{stuName},#{stuNo},#{stuClazz},#{bookNo},#{bookName},#{orderTime},#{isBorrow})
+  	</update>
+    <update id="edit" parameterType="com.ljb.pojo.Order">
+  		update yuyue set Y_StuName = #{stuName},Y_StuNo = #{stuNo},Y_class = #{stuClazz},Y_BookNo = #{bookNo},Y_book = #{bookName},Y_time = #{orderTime},IsBorrow = #{isBorrow} where YNO = #{yNo}
+  	</update>
+    <update id="delete" parameterType="String">
+  		delete from yuyue where YNO in (${value})
+  	</update>
+</mapper>

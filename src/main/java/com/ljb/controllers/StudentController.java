@@ -2,7 +2,6 @@ package com.ljb.controllers;
 
 import com.ljb.page.Page;
 import com.ljb.pojo.Student;
-import com.ljb.service.StuOpeService;
 import com.ljb.service.StudentService;
 import com.ljb.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +43,7 @@ public class StudentController {
     @ResponseBody
     public Map<String, Object> getList(
             @RequestParam(value="username",required=false,defaultValue="") String username,
-            @RequestParam(value="clazzId",required=false) Integer clazzId,
+            //@RequestParam(value="clazzId",required=false) Integer clazzId,
             HttpServletRequest request,
             Page page
     ){

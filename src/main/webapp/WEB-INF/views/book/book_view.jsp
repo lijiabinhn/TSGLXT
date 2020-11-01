@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,9 +33,9 @@
                 remoteSort: false,
                 columns: [[
                     {field:'chk',checkbox: true,width:50},
-                    {field:'bookNo',title:'ID',width:50, sortable: true},
-                    {field:'bookName',title:'书名',width:150, sortable: true},
-                    {field:'Author',title:'作者',width:150, sortable: true},
+                    {field:'bookNo',title:'ID',width:80, sortable: true},
+                    {field:'bookName',title:'书名',width:200, sortable: true},
+                    {field:'Authors',title:'作者',width:150, sortable: true},
                     {field:'Publish',title:'出版社',width:150, sortable: true},
                     {field:'buyTime',title:'购买时间',width:150, sortable: true},
                     {field:'isBorrow',title:'是否借阅',width:150, sortable: true},
@@ -76,7 +76,7 @@
                 } else{
                     var ids = [];
                     $(selectRows).each(function(i, row){
-                        ids[i] = row.id;
+                        ids[i] = row.bookNo;
                     });
                     $.messager.confirm("消息提醒", "如果年级下存在班级信息则无法删除，须先删除年级下属的班级信息？", function(r){
                         if(r){
@@ -104,7 +104,7 @@
 
             //设置添加窗口
             $("#addDialog").dialog({
-                title: "添加年级",
+                title: "添加书籍",
                 width: 450,
                 height: 350,
                 iconCls: "icon-add",
@@ -137,8 +137,8 @@
                                             //关闭窗口
                                             $("#addDialog").dialog("close");
                                             //清空原表格数据
-                                            $("#add_name").textbox('setValue', "");
-                                            $("#add_remark").textbox('setValue', "");
+                                            $("#add_bookName").textbox('setValue', "");
+                                            // $("#add_remark").textbox('setValue', "");
                                             //重新刷新页面数据
                                             $('#dataList').datagrid("reload");
 
@@ -153,8 +153,8 @@
                     },
                 ],
                 onClose: function(){
-                    $("#add_name").textbox('setValue', "");
-                    $("#add_remark").textbox('setValue', "");
+                    $("#add_bookName").textbox('setValue', "");
+                    // $("#add_remark").textbox('setValue', "");
                 }
             });
 
@@ -213,19 +213,19 @@
                     var selectRow = $("#dataList").datagrid("getSelected");
                     //设置值
                     $("#edit-id").val(selectRow.bookNo);
-                    $("#edit_name").textbox('setValue', selectRow.bookName);
-                    $("#edit_name").textbox('setValue', selectRow.Author);
-                    $("#edit_name").textbox('setValue', selectRow.Publish);
-                    $("#edit_name").textbox('setValue', selectRow.buyTime);
-                    $("#edit_name").textbox('setValue', selectRow.isBorrow);
-                    $("#edit_remark").textbox('setValue', selectRow.isBorrow);
+                    $("#edit_bookName").textbox('setValue', selectRow.bookName);
+                    $("#edit_Authors").textbox('setValue', selectRow.Authors);
+                    $("#edit_Publish").textbox('setValue', selectRow.Publish);
+                    $("#edit_buyTime").textbox('setValue', selectRow.buyTime);
+                    $("#edit_isBorrow").textbox('setValue', selectRow.isBorrow);
+                    $("#edit_isOrder").textbox('setValue', selectRow.isOrder);
                 }
             });
 
             //搜索按钮
             $("#search-btn").click(function(){
                 $('#dataList').datagrid('reload',{
-                    name:$("#search-name").textbox('getValue')
+                    username:$("#search-name").textbox('getValue')
                 });
             });
         });
@@ -238,16 +238,16 @@
 </table>
 <!-- 工具栏 -->
 <div id="toolbar">
-    <c:if test="${userType == 1}">
+<%--    <c:if test="${userType == 1}">--%>
         <div style="float: left;"><a id="add" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加</a></div>
         <div style="float: left;" class="datagrid-btn-separator"></div>
         <div style="float: left;"><a id="edit" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">修改</a></div>
         <div style="float: left;" class="datagrid-btn-separator"></div>
-    </c:if>
+<%--    </c:if>--%>
     <div>
-        <c:if test="${userType == 1}">
+<%--        <c:if test="${userType == 1}">--%>
             <a id="delete" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-some-delete',plain:true">删除</a>
-        </c:if>
+<%--        </c:if>--%>
         书名：<input id="search-name" class="easyui-textbox" />
         <a id="search-btn" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true">搜索</a>
     </div>
@@ -260,19 +260,19 @@
             <tr >
                 <td>书名:</td>
                 <td>
-                    <input id="add_name"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="bookName" data-options="required:true, missingMessage:'请填写书名'"  />
+                    <input id="add_bookname"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="bookName" data-options="required:true, missingMessage:'请填写书名'"  />
                 </td>
             </tr>
             <tr >
                 <td>作者:</td>
                 <td>
-                    <input id="add_author"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="Author" data-options="required:true, missingMessage:'请填写作者'"  />
+                    <input id="add_Authors"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="Authors" data-options="required:true, missingMessage:'请填写作者'"  />
                 </td>
             </tr>
             <tr >
                 <td>出版社:</td>
                 <td>
-                    <input id="add_publish"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="Publish" data-options="required:true, missingMessage:'请填写出版社'"  />
+                    <input id="add_Publish"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="Publish" data-options="required:true, missingMessage:'请填写出版社'"  />
                 </td>
             </tr>
             <tr >
@@ -290,7 +290,7 @@
             <tr >
                 <td>是否预约:</td>
                 <td>
-                    <input id="add_Order"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="isOrder" data-options="required:true, missingMessage:'请填写是否预约'"  />
+                    <input id="add_isOrder"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="isOrder" data-options="required:true, missingMessage:'请填写是否预约'"  />
                 </td>
             </tr>
         </table>
@@ -301,24 +301,24 @@
 <!-- 修改窗口 -->
 <div id="editDialog" style="padding: 10px">
     <form id="editForm" method="post">
-        <input type="hidden" name="id" id="edit-id">
+        <input type="hidden" name="bookNo" id="edit-id">
         <table id="editTable" border=0 cellpadding="8" >
             <tr >
                 <td>书名:</td>
                 <td>
-                    <input id="edit_name"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="bookName" data-options="required:true, missingMessage:'请填写书名'"  />
+                    <input id="edit_bookName"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="bookName" data-options="required:true, missingMessage:'请填写书名'"  />
                 </td>
             </tr>
             <tr >
                 <td>作者:</td>
                 <td>
-                    <input id="edit_author"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="Author" data-options="required:true, missingMessage:'请填写作者'"  />
+                    <input id="edit_Authors"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="Authors" data-options="required:true, missingMessage:'请填写作者'"  />
                 </td>
             </tr>
             <tr >
                 <td>出版社:</td>
                 <td>
-                    <input id="edit_publish"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="Publish" data-options="required:true, missingMessage:'请填写出版社'"  />
+                    <input id="edit_Publish"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="Publish" data-options="required:true, missingMessage:'请填写出版社'"  />
                 </td>
             </tr>
             <tr >
@@ -336,7 +336,7 @@
             <tr >
                 <td>是否预约:</td>
                 <td>
-                    <input id="edit_Order"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="isOrder" data-options="required:true, missingMessage:'请填写是否预约'"  />
+                    <input id="edit_isOrder"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="isOrder" data-options="required:true, missingMessage:'请填写是否预约'"  />
                 </td>
             </tr>
         </table>

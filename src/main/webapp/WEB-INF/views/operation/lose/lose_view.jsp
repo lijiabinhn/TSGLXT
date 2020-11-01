@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <title>班级列表</title>
+    <meta charset="UTF-8">
+    <title>挂失图书列表</title>
     <link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="../easyui/css/demo.css">
@@ -12,41 +12,34 @@
     <script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="../easyui/js/validateExtends.js"></script>
     <script type="text/javascript">
-        var gradeList = ${gradeListJson};
         $(function() {
             var table;
 
             //datagrid初始化
             $('#dataList').datagrid({
-                title:'班级列表',
+                title:'挂失图书列表',
                 iconCls:'icon-more',//图标
                 border: true,
                 collapsible:false,//是否可折叠的
                 fit: true,//自动大小
                 method: "post",
-                url:"get_list?t="+new Date().getTime(),
-                idField:'id',
+                url:"get_loseList?t="+new Date().getTime(),
+                idField:'lbNo',
                 singleSelect:false,//是否单选
                 pagination:true,//分页控件
                 rownumbers:true,//行号
-                sortName:'id',
+                sortName:'lbNo',
                 sortOrder:'DESC',
                 remoteSort: false,
                 columns: [[
                     {field:'chk',checkbox: true,width:50},
-                    {field:'id',title:'ID',width:50, sortable: true},
-                    {field:'name',title:'班级名',width:150, sortable: true},
-                    {field:'gradeId',title:'所属年级',width:150, sortable: true,
-                        formatter:function(value,index,row){
-                            for(var i=0;i<gradeList.length;i++){
-                                if(gradeList[i].id == value){
-                                    return gradeList[i].name;
-                                }
-                            }
-                            return value;
-                        }
-                    },
-                    {field:'remark',title:'备注',width:300},
+                    {field:'lbNo',title:'ID',width:80, sortable: true},
+                    {field:'stuNo',title:'学号',width:150, sortable: true},
+                    {field:'stuName',title:'姓名',width:150, sortable: true},
+                    {field:'bookNo',title:'书号',width:150, sortable: true},
+                    {field:'bookName',title:'书名',width:150, sortable: true},
+                    {field:'borrowTime',title:'借阅时间',width:150, sortable: true},
+                    {field:'loseTime',title:'挂失时间',width:150},
                 ]],
                 toolbar: "#toolbar"
             });
@@ -83,13 +76,13 @@
                 } else{
                     var ids = [];
                     $(selectRows).each(function(i, row){
-                        ids[i] = row.id;
+                        ids[i] = row.lbNo;
                     });
-                    $.messager.confirm("消息提醒", "如果班级下存在学生信息则无法删除，须先删除班级下属的学生信息？", function(r){
+                    $.messager.confirm("消息提醒", "如果年级下存在班级信息则无法删除，须先删除年级下属的班级信息？", function(r){
                         if(r){
                             $.ajax({
                                 type: "post",
-                                url: "delete",
+                                url: "deleteLose",
                                 data: {ids: ids},
                                 dataType:'json',
                                 success: function(data){
@@ -111,9 +104,9 @@
 
             //设置添加窗口
             $("#addDialog").dialog({
-                title: "添加班级",
+                title: "添加挂失信息",
                 width: 450,
-                height: 400,
+                height: 450,
                 iconCls: "icon-add",
                 modal: true,
                 collapsible: false,
@@ -135,7 +128,7 @@
                                 var data = $("#addForm").serialize();
                                 $.ajax({
                                     type: "post",
-                                    url: "add",
+                                    url: "addLose",
                                     data: data,
                                     dataType:'json',
                                     success: function(data){
@@ -144,8 +137,12 @@
                                             //关闭窗口
                                             $("#addDialog").dialog("close");
                                             //清空原表格数据
-                                            $("#add_name").textbox('setValue', "");
-                                            $("#add_remark").textbox('setValue', "");
+                                            $("#add_stuNo").textbox('setValue', "");
+                                            $("#add_stuName").textbox('setValue', "");
+                                            $("#add_bookNo").textbox('setValue', "");
+                                            $("#add_bookName").textbox('setValue', "");
+                                            $("#add_borrowTime").textbox('setValue', "");
+                                            $("#add_loseTime").textbox('setValue', "");
                                             //重新刷新页面数据
                                             $('#dataList').datagrid("reload");
 
@@ -160,16 +157,20 @@
                     },
                 ],
                 onClose: function(){
-                    $("#add_name").textbox('setValue', "");
-                    $("#add_remark").textbox('setValue', "");
+                    $("#add_stuNo").textbox('setValue', "");
+                    $("#add_stuName").textbox('setValue', "");
+                    $("#add_bookNo").textbox('setValue', "");
+                    $("#add_bookName").textbox('setValue', "");
+                    $("#add_borrowTime").textbox('setValue', "");
+                    $("#add_loseTime").textbox('setValue', "");
                 }
             });
 
-            //编辑班级信息
+            //编辑年级信息
             $("#editDialog").dialog({
-                title: "修改班级信息",
+                title: "修改挂失信息",
                 width: 450,
-                height: 400,
+                height: 450,
                 iconCls: "icon-edit",
                 modal: true,
                 collapsible: false,
@@ -193,7 +194,7 @@
 
                                 $.ajax({
                                     type: "post",
-                                    url: "edit",
+                                    url: "editLose",
                                     data: data,
                                     dataType:'json',
                                     success: function(data){
@@ -219,19 +220,20 @@
                 onBeforeOpen: function(){
                     var selectRow = $("#dataList").datagrid("getSelected");
                     //设置值
-                    $("#edit-id").val(selectRow.id);
-                    $("#edit_name").textbox('setValue', selectRow.name);
-                    $("#edit_gradeId").combobox('setValue', selectRow.gradeId);
-                    $("#edit_remark").textbox('setValue', selectRow.remark);
+                    $("#edit-id").val(selectRow.lbNo);
+                    $("#edit_stuNo").textbox('setValue', selectRow.stuNo);
+                    $("#edit_stuName").textbox('setValue', selectRow.stuName);
+                    $("#edit_bookNo").textbox('setValue', selectRow.bookNo);
+                    $("#edit_bookName").textbox('setValue', selectRow.bookName);
+                    $("#edit_borrowTime").textbox('setValue', selectRow.borrowTime);
+                    $("#edit_loseTime").textbox('setValue', selectRow.loseTime);
                 }
             });
-
 
             //搜索按钮
             $("#search-btn").click(function(){
                 $('#dataList').datagrid('reload',{
-                    name:$("#search-name").textbox('getValue'),
-                    gradeId:$("#search-grade-id").combobox('getValue')
+                    username:$("#search-name").textbox('getValue')
                 });
             });
         });
@@ -244,24 +246,17 @@
 </table>
 <!-- 工具栏 -->
 <div id="toolbar">
-    <c:if test="${userType == 1}">
-        <div style="float: left;"><a id="add" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加</a></div>
-        <div style="float: left;" class="datagrid-btn-separator"></div>
-        <div style="float: left;"><a id="edit" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">修改</a></div>
-        <div style="float: left;" class="datagrid-btn-separator"></div>
-    </c:if>
+    <%--    <c:if test="${userType == 1}">--%>
+    <div style="float: left;"><a id="add" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加</a></div>
+    <div style="float: left;" class="datagrid-btn-separator"></div>
+    <div style="float: left;"><a id="edit" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">修改</a></div>
+    <div style="float: left;" class="datagrid-btn-separator"></div>
+    <%--    </c:if>--%>
     <div>
-        <c:if test="${userType == 1}">
-            <a id="delete" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-some-delete',plain:true">删除</a>
-        </c:if>
-        班级名：<input id="search-name" class="easyui-textbox" />
-        所属年级：
-        <select id="search-grade-id" class="easyui-combobox" style="width: 150px;">
-            <option value="">全部</option>
-            <c:forEach items="${ gradeList}" var="grade">
-                <option value="${grade.id }">${grade.name }</option>
-            </c:forEach>
-        </select>
+        <%--        <c:if test="${userType == 1}">--%>
+        <a id="delete" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-some-delete',plain:true">删除</a>
+        <%--        </c:if>--%>
+        书名：<input id="search-name" class="easyui-textbox" />
         <a id="search-btn" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true">搜索</a>
     </div>
 </div>
@@ -271,24 +266,40 @@
     <form id="addForm" method="post">
         <table id="addTable" cellpadding="8">
             <tr >
-                <td>班级名:</td>
+                <td>学号:</td>
                 <td>
-                    <input id="add_name"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="name" data-options="required:true, missingMessage:'请填写班级名'"  />
+                    <input id="add_stuNo"  class="easyui-textbox" style="width: 200px; height: 30px;" type="int" name="stuNo" data-options="required:true, missingMessage:'请填写学号'"  />
                 </td>
             </tr>
             <tr >
-                <td>所属年级:</td>
+                <td>姓名:</td>
                 <td>
-                    <select id="add_gradeId"  class="easyui-combobox" style="width: 200px;" name="gradeId" data-options="required:true, missingMessage:'请选择所属年级'">
-                        <c:forEach items="${gradeList}" var="grade">
-                            <option value="${grade.id }">${grade.name }</option>
-                        </c:forEach>
-                    </select>
+                    <input id="add_stuName"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="stuName" data-options="required:true, missingMessage:'请填写姓名'"  />
                 </td>
             </tr>
-            <tr>
-                <td>备注:</td>
-                <td><input id="add_remark" style="width: 256px; height: 180px;" class="easyui-textbox" type="text" name="remark" data-options="multiline:true"  /></td>
+            <tr >
+                <td>书号:</td>
+                <td>
+                    <input id="add_bookNo"  class="easyui-textbox" style="width: 200px; height: 30px;" type="int" name="bookNo" data-options="required:true, missingMessage:'请填写书号'"  />
+                </td>
+            </tr>
+            <tr >
+                <td>书名:</td>
+                <td>
+                    <input id="add_bookName"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="bookName" data-options="required:true, missingMessage:'请填写书名'"  />
+                </td>
+            </tr>
+            <tr >
+                <td>借阅时间:</td>
+                <td>
+                    <input id="add_borrowTime"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="borrowTime" data-options="required:true, missingMessage:'请填写借阅时间'"  />
+                </td>
+            </tr>
+            <tr >
+                <td>挂失时间:</td>
+                <td>
+                    <input id="add_loseTime"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="loseTime" data-options="required:true, missingMessage:'请填写挂失时间'"  />
+                </td>
             </tr>
         </table>
     </form>
@@ -298,27 +309,43 @@
 <!-- 修改窗口 -->
 <div id="editDialog" style="padding: 10px">
     <form id="editForm" method="post">
-        <input type="hidden" name="id" id="edit-id">
+        <input type="hidden" name="lbNo" id="edit-id">
         <table id="editTable" border=0 cellpadding="8" >
             <tr >
-                <td>班级名:</td>
+                <td>学号:</td>
                 <td>
-                    <input id="edit_name"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="name" data-options="required:true, missingMessage:'请填写班级名'"  />
+                    <input id="edit_stuNo"  class="easyui-textbox" style="width: 200px; height: 30px;" type="int" name="stuNo" data-options="required:true, missingMessage:'请填写学号'"  />
                 </td>
             </tr>
             <tr >
-                <td>所属年级:</td>
+                <td>姓名:</td>
                 <td>
-                    <select id="edit_gradeId"  class="easyui-combobox" style="width: 200px;" name="gradeId" data-options="required:true, missingMessage:'请选择所属年级'">
-                        <c:forEach items="${ gradeList}" var="grade">
-                            <option value="${grade.id }">${grade.name }</option>
-                        </c:forEach>
-                    </select>
+                    <input id="edit_stuName"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="stuName" data-options="required:true, missingMessage:'请填写姓名'"  />
                 </td>
             </tr>
-            <tr>
-                <td>备注:</td>
-                <td><input id="edit_remark" style="width: 256px; height: 180px;" class="easyui-textbox" type="text" name="remark" data-options="multiline:true"  /></td>
+            <tr >
+                <td>书号:</td>
+                <td>
+                    <input id="edit_bookNo"  class="easyui-textbox" style="width: 200px; height: 30px;" type="int" name="bookNo" data-options="required:true, missingMessage:'请填写书号'"  />
+                </td>
+            </tr>
+            <tr >
+                <td>书名:</td>
+                <td>
+                    <input id="edit_bookName"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="bookName" data-options="required:true, missingMessage:'请填写书名'"  />
+                </td>
+            </tr>
+            <tr >
+                <td>借阅时间:</td>
+                <td>
+                    <input id="edit_borrowTime"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="borrowTime" data-options="required:true, missingMessage:'请填写借阅时间'"  />
+                </td>
+            </tr>
+            <tr >
+                <td>挂失时间:</td>
+                <td>
+                    <input id="edit_loseTime"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="loseTime" data-options="required:true, missingMessage:'请填写挂失时间'"  />
+                </td>
             </tr>
         </table>
     </form>

@@ -4,21 +4,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ljb.dao.BookMapper">
     <select id="findList" parameterType="Map" resultType="com.ljb.pojo.Book">
-  		select * from books where BookName like #{name} limit #{offset},#{pageSize}
+  		select BookNO as bookNo,BookName as bookName,Author as Authors,Publishment as Publish,ButTime as buyTime,Borrowed as isBorrow,Ordered as isOrder from books where BookName like #{username} limit #{offset},#{pageSize}
   	</select>
     <select id="findAll" resultType="com.ljb.pojo.Book">
-  		select * from books
+  		select BookNO as bookNo,BookName as bookName,Author as Authors,Publishment as Publish,ButTime as buyTime,Borrowed as isBorrow,Ordered as isOrder from books
   	</select>
     <select id="getTotal" parameterType="Map" resultType="Integer">
-  		select count(id) from books where BookName like #{name}
+  		select count(BookNO) from books where BookName like #{username}
   	</select>
-    <!--<update id="add" parameterType="Grade">
-  		insert into grade(id,name,remark) values(null,#{name},#{remark})
+    <update id="add" parameterType="com.ljb.pojo.Book">
+  		insert into books(BookNO,BookName,Author,Publishment,ButTime,Borrowed,Ordered) values(null,#{bookName},#{Authors},#{Publish},#{buyTime},#{isBorrow},#{isOrder})
   	</update>
-    <update id="edit" parameterType="Grade">
-  		update grade set name = #{name},remark = #{remark} where id = #{id}
+    <update id="edit" parameterType="com.ljb.pojo.Book">
+  		update books set BookName = #{bookName},Author = #{Authors},Publishment = #{Publish},ButTime = #{buyTime},Borrowed = #{isBorrow},Ordered = #{isOrder} where BookNO = #{bookNo}
   	</update>
     <update id="delete" parameterType="String">
-  		delete from grade where id in (${value})
-  	</update>-->
+  		delete from books where BookNO in (${value})
+  	</update>
 </mapper>

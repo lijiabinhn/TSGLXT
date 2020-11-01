@@ -2,6 +2,28 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ljb.dao.UserMapper">
-
+<mapper namespace="com.ljb.dao.TicketMapper">
+    <!--<resultMap id="resultUser" type="com.ljb.pojo.User">
+        <result column="id" property="userId" jdbcType="INTEGER"/>
+        <result column="username" property="userName" jdbcType="VARCHAR"/>
+        <result column="password" property="userPassword" jdbcType="VARCHAR"/>
+    </resultMap>-->
+  <!--  <select id="findByUserName" parameterType="String" resultType="com.ljb.pojo.Ticket">
+  		select user_id as userId,user_name as userName,user_pw as userPw from userinfo where user_name = #{username} limit 1
+  	</select>-->
+    <select id="findList" parameterType="Map" resultType="com.ljb.pojo.Ticket">
+  		select TiNo as ticNo,StuNO as stuNo,StuName as stuName,Class as stuClazz,Book_name as bookName,T_time as ticTime,T_money as ticMoney,moneyed as isMoney,pay_way as payWay from ticket where Book_name like #{username} limit #{offset},#{pageSize}
+  	</select>
+    <select id="getTotal" parameterType="Map" resultType="Integer">
+  		select count(TiNo) from ticket where Book_name like #{username}
+  	</select>
+    <insert id="add" parameterType="com.ljb.pojo.Ticket">
+  		insert into ticket(TiNo,StuNO,StuName,Class,Book_name,T_time,T_money,moneyed,pay_way) values(null,#{stuNo},#{stuName},#{stuClazz},#{bookName},#{ticTime},#{ticMoney},#{isMoney},#{payWay})
+  	</insert>
+    <update id="edit" parameterType="com.ljb.pojo.Ticket">
+  		update ticket set StuNO = #{stuNo},StuName = #{stuName},Class = #{stuClazz},Book_name = #{bookName},T_time = #{ticTime},T_money = #{ticMoney},moneyed = #{isMoney},pay_way = #{payWay} where TiNo = #{ticNo}
+  	</update>
+    <update id="delete" parameterType="String">
+  		delete from ticket where TiNo in (${value})
+  	</update>
 </mapper>

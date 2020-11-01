@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class Book {
     private int bookNo;//书号
     private String bookName;//书名
-    private String Author;//作者
+    private String Authors;//作者
     private String Publish;//出版社
     private String buyTime;//购买时间
     private String isBorrow;//是否借阅
@@ -30,12 +30,12 @@ public class Book {
         this.bookName = bookName;
     }
 
-    public String getAuthor() {
-        return Author;
+    public String getAuthors() {
+        return Authors;
     }
 
-    public void setAuthor(String author) {
-        Author = author;
+    public void setAuthors(String authors) {
+        Authors = authors;
     }
 
     public String getPublish() {
@@ -75,7 +75,7 @@ public class Book {
         return "Book{" +
                 "bookNo=" + bookNo +
                 ", bookName='" + bookName + '\'' +
-                ", Author='" + Author + '\'' +
+                ", Author='" + Authors + '\'' +
                 ", Publish='" + Publish + '\'' +
                 ", buyTime='" + buyTime + '\'' +
                 ", isBorrow='" + isBorrow + '\'' +

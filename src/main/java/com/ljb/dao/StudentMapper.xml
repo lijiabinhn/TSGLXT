@@ -4,33 +4,33 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ljb.dao.StudentMapper">
     <select id="findByUserName" parameterType="String" resultType="com.ljb.pojo.Student">
-  		select stu_id as stuId,stu_sn as stuSn,stu_cid as stuCid,stu_pw as stuPw,stu_p as photo,stu_sex as sex,stu_m as remark from student where stu_sn = #{name}
+  		select stu_id as stuId,stu_sn as stuSn,stu_cid as stuCid,stu_pw as stuPw,stu_p as photo,stu_sex as sex,stu_m as remark from student1 where stu_sn = #{name}
   	</select>
     <insert id="add" parameterType="com.ljb.pojo.Student">
-  		insert into student(stu_sn,stu_cid,stu_pw,stu_p,stu_sex,stu_m) values(#{stuSn},#{stuCid},#{stuPw},#{photo},#{sex},#{remark})
+  		insert into student1(stu_sn,stu_cid,stu_pw,stu_p,stu_sex,stu_m) values(#{stuSn},#{stuCid},#{stuPw},#{photo},#{sex},#{remark})
   	</insert>
 
-    <update id="edit" parameterType="com.ljb.pojo.StuOperation">
-  		update student set stu_sn = #{stuSn},stu_cid = #{stuCid},stu_pw = #{stuPw},stu_p = #{photo},stu_sex=#{sex},stu_m = #{remark} where stu_id = #{stuId}
+    <update id="edit" parameterType="com.ljb.pojo.Student">
+  		update student1 set stu_sn = #{stuSn},stu_cid = #{stuCid},stu_pw = #{stuPw},stu_p = #{photo},stu_sex=#{sex},stu_m = #{remark} where stu_id = #{stuId}
   	</update>
     <update id="delete" parameterType="String">
-  		delete from student where stu_id in (${value})
+  		delete from student1 where stu_id in (${value})
   	</update>
     <select id="findList" parameterType="Map" resultType="com.ljb.pojo.Student">
-        select stu_id as stuId,stu_sn as stuSn,stu_cid as stuCid,stu_pw as stuPw,stu_p as photo,stu_sex as sex,stu_m as remark from student where 1=1
+        select stu_id as stuId,stu_sn as stuSn,stu_cid as stuCid,stu_pw as stuPw,stu_p as photo,stu_sex as sex,stu_m as remark from student1 where 1=1
         <if test="username !=null">
             and stu_sn like #{username}
         </if>
-        <if test="clazzId >0">
+       <!-- <if test="clazzId >0">
             and stu_cid = #{clazzId}
-        </if>
+        </if>-->
         limit #{offset},#{pageSize}
     </select>
     <select id="findAll" resultType="com.ljb.pojo.Student">
-  		select stu_id as stuId,stu_sn as stuSn,stu_cid as stuCid,stu_pw as stuPw,stu_p as photo,stu_sex as sex,stu_m as remark from student
+  		select stu_id as stuId,stu_sn as stuSn,stu_cid as stuCid,stu_pw as stuPw,stu_p as photo,stu_sex as sex,stu_m as remark from student1
   	</select>
     <select id="getTotal" parameterType="Map" resultType="Integer">
-        select count(stu_id) from student where 1=1
+        select count(stu_id) from student1 where 1=1
         <if test="username !=null">
             and stu_sn like #{username}
         </if>

@@ -243,7 +243,7 @@
             $("#search-btn").click(function(){
                 $('#dataList').datagrid('reload',{
                     username:$("#search-name").textbox('getValue'),
-                    clazzId:$("#search-clazz-id").combobox('getValue')
+                    // clazzId:$("#search-clazz-id").combobox('getValue')
                 });
             });
             //上传图片按钮
