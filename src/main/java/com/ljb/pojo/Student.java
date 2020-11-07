@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class Student {
     private Integer stuId;
     private String stuSn;
-    private Integer stuCid;
+    private String stuCid;
     private String stuPw;
     private String photo;
     private String sex;
@@ -30,11 +30,11 @@ public class Student {
         this.stuSn = stuSn;
     }
 
-    public Integer getStuCid() {
+    public String getStuCid() {
         return stuCid;
     }
 
-    public void setStuCid(Integer stuCid) {
+    public void setStuCid(String stuCid) {
         this.stuCid = stuCid;
     }
 

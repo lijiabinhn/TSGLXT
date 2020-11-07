@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ljb.dao.BorrowMapper">
     <select id="findList" parameterType="Map" resultType="com.ljb.pojo.Borrow">
-  		select OR_NO as orNo,StuName as stuName,StuNO as stuNo,Class as stuClazz,BookNO as bookNo,BookName as bookName,BorrowTime as borrowTime,returnTime as returnTime from stuborrow where BookName like #{username} limit #{offset},#{pageSize}
+  		select OR_NO as orNo,StuName as stuName,StuNO as stuNo,Class as stuClazz,BookNO as bookNo,BookName as bookName,BorrowTime as borrowTime,returnTime as returnTime from stuborrow where StuName like #{username} limit #{offset},#{pageSize}
   	</select>
     <!--<select id="findAll" resultType="com.ljb.pojo.Borrow">
   		select BookNO as bookNo,BookName as bookName,Author as Author,Publishment as Publish,ButTime as buyTime,Borrowed as isBorrow,Ordered as isOrder from stuborrow

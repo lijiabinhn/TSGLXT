@@ -27,7 +27,7 @@
         limit #{offset},#{pageSize}
     </select>
     <select id="findAll" resultType="com.ljb.pojo.Student">
-  		select stu_id as stuId,stu_sn as stuSn,stu_cid as stuCid,stu_pw as stuPw,stu_p as photo,stu_sex as sex,stu_m as remark from student1
+  		select stu_cid as stuCid from student1
   	</select>
     <select id="getTotal" parameterType="Map" resultType="Integer">
         select count(stu_id) from student1 where 1=1

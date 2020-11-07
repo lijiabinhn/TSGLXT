@@ -48,7 +48,15 @@
                     dataType: "json", //返回数据类型
                     success: function(data){
                         if("success" == data.type){
-                            window.parent.location.href = "index";
+                            // window.parent.location.href = "index";
+                            if(document.getElementById("radio-2").checked==true){
+
+                                window.parent.location.href = "userIndex";
+                            }
+                            else {
+                                window.parent.location.href = "index";
+                            }
+
                         } else{
                             $.messager.alert("消息提醒", data.msg, "warning");
                             $("#vcodeImg").click();//切换验证码
@@ -66,13 +74,13 @@
             });
         })
     </script>
-    <title>登录|图书后台管理系统</title>
+    <title>登录|图书管理系统</title>
     <meta name="keywords" content="图书后台管理系统">
 </head>
 <body>
 
 <div class="header" style="padding: 0;">
-    <h2 style="color: white; width: 400px; height: 60px; line-height: 60px; margin: 0 0 0 30px; padding: 0;">图书后台管理系统</h2>
+    <h2 style="color: white; width: 400px; height: 60px; line-height: 60px; margin: 0 0 0 30px; padding: 0;">图书管理系统</h2>
 </div>
 <div class="loginWraper">
     <div id="loginform" class="loginBox">
@@ -97,18 +105,18 @@
 
             <div class="mt-20 skin-minimal" style="text-align: center;">
                 <div class="radio-box">
-                    <input type="radio" id="radio-2" name="type" value="2" />
+                    <input type="radio" id="radio-2" checked="checked" name="type" value="2" />
                     <label for="radio-1">学生</label>
                 </div>
                 <div class="radio-box">
-                    <input type="radio" id="radio-1" checked name="type" value="1" />
+                    <input type="radio" id="radio-1" name="type" value="1" />
                     <label for="radio-2">管理员</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="formControls col-8 col-offset-3">
-                    <input id="submitBtn" type="button" class="btn btn-success radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">
+                    <input id="submitBtn" type="button" class="btn btn-success radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;" >
                 </div>
             </div>
         </form>

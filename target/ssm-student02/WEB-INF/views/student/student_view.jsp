@@ -345,7 +345,7 @@
             <tr >
                 <td>所属班级:</td>
                 <td>
-                    <input id="add_clazzId"  class="easyui-textbox" style="width: 200px; height: 30px;" type="int" name="stuCid" data-options="required:true, missingMessage:'请选择所属班级'"  />
+                    <input id="add_clazzId"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="stuCid" data-options="required:true, missingMessage:'请选择所属班级'"  />
                     <%--<select id="add_clazzId"  class="easyui-combobox" style="width: 200px;" name="stuCid" data-options="required:true, missingMessage:'请选择所属班级'">
                         <c:forEach items="${ clazzList}" var="clazz">
                             <option value="${clazz.cid }">${clazz.cname }</option>

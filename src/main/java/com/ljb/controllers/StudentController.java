@@ -4,6 +4,7 @@ import com.ljb.page.Page;
 import com.ljb.pojo.Student;
 import com.ljb.service.StudentService;
 import com.ljb.util.StringUtil;
+import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -34,7 +35,7 @@ public class StudentController {
         System.out.println(clazzList);
         model.addObject("clazzList",clazzList );
         model.addObject("clazzListJson", JSONArray.fromObject(clazzList));*/
-       /* List<Student> clazzList=studentService.findAll();
+        /*List<Student> clazzList=studentService.findAll();
         model.addObject("clazzList",clazzList );
         model.addObject("clazzListJson", JSONArray.fromObject(clazzList));*/
         return model;
@@ -69,8 +70,7 @@ public class StudentController {
     @RequestMapping(path="/upload_photo",method=RequestMethod.POST)
     @ResponseBody
     public Map<String, String> uploadPhoto(MultipartFile photo,
-                                           HttpServletRequest request,
-                                           HttpServletResponse response
+                                           HttpServletRequest request
     ) throws IOException {
         Map<String, String> ret = new HashMap<String, String>();
         if(photo == null){
@@ -120,7 +120,7 @@ public class StudentController {
             ret.put("msg", "请输入密码！");
             return ret;
         }
-        if(student.getStuCid() == 0){
+        if(student.getStuCid() == null){
             ret.put("type", "error");
             ret.put("msg", "请输入班级Id");
             return ret;
@@ -163,7 +163,7 @@ public class StudentController {
             ret.put("msg", "密码不能为空！");
             return ret;
         }
-        if(student.getStuCid() == 0){
+        if(student.getStuCid() == null){
             ret.put("type", "error");
             ret.put("msg", "班级ID不能为空！");
             return ret;

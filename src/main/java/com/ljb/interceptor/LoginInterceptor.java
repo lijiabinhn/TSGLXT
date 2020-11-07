@@ -1,5 +1,6 @@
 package com.ljb.interceptor;
 
+import com.ljb.pojo.Student;
 import com.ljb.pojo.User;
 import net.sf.json.JSONObject;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -15,7 +16,8 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         String url = request.getRequestURI();
         User user = (User) request.getSession().getAttribute("user");
-        if(user == null){
+        Student student = (Student) request.getSession().getAttribute("student");
+        if(user == null && student==null){
             //拦截器
             if("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))){
                 //ajax����

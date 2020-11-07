@@ -35,6 +35,14 @@ public class SystemController {
         model.setViewName("system/index");
         return model;
     }
+
+
+    @RequestMapping(path = "/userIndex",method = RequestMethod.GET)
+    public ModelAndView userIndex(ModelAndView model){
+        model.setViewName("system/userIndex");
+        return model;
+    }
+
     //跳转到login页面
     @RequestMapping(path = "/login",method = RequestMethod.GET)
     public ModelAndView login(ModelAndView model)
@@ -73,7 +81,8 @@ public class SystemController {
             @RequestParam(value = "password", required = true) String password,
             @RequestParam(value = "vcode", required = true) String vcode,
             @RequestParam(value = "type", required = true) int type,
-            HttpServletRequest request
+            HttpServletRequest request,
+            HttpServletResponse response
     ) {
 
         Map<String, String> ret = new HashMap<String, String>();
@@ -137,7 +146,7 @@ public class SystemController {
                 ret.put("msg", "密码错误!");
                 return ret;
             }
-            request.getSession().setAttribute("user", student);
+            request.getSession().setAttribute("student", student);
         }
         request.getSession().setAttribute("userType", type);
         ret.put("type", "success");
