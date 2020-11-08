@@ -13,4 +13,6 @@ public interface BorrowService {
     public int add(Borrow borrow);
     public int edit(Borrow borrow);
     public int delete(String ids);
+    public String userAdd(Borrow borrow);
+    public String showInfo(Borrow borrow);
 }

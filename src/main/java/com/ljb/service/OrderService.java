@@ -13,4 +13,6 @@ public interface OrderService {
     public int add(Order order);
     public int edit(Order order);
     public int delete(String ids);
+    public String userAdd(Order order);//添加预约信息
+    public  String showInfo(Order order);
 }

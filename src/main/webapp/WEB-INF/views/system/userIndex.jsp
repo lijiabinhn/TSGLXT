@@ -18,7 +18,7 @@
         var _menus = {"menus":[
                 {"menuid":"1","icon":"","menuname":"查询图书",
                     "menus":[
-                       // {"menuid":"11","menuname":"图书列表","icon":"icon-user-teacher","url":"../us/ubList"}
+                        {"menuid":"11","menuname":"图书列表","icon":"icon-user-teacher","url":"../us/ubList"}
                     ]
                 },
                 {"menuid":"2","icon":"","menuname":"图书管理",

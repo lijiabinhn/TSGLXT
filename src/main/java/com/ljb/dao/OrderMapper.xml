@@ -18,4 +18,14 @@
     <update id="delete" parameterType="String">
   		delete from yuyue where YNO in (${value})
   	</update>
+
+	<select id="showInfo" parameterType="com.ljb.pojo.Order" resultType="String">
+		select show_Info(#{bookNo},#{stuNo})
+	</select>
+
+	<select id="userAdd" parameterType="com.ljb.pojo.Order" resultType="String">
+		call ShowOrderInfo(#{bookNo},#{stuNo})
+	</select>
+
+
 </mapper>

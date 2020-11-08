@@ -39,4 +39,14 @@ public class BorrowServiceImpl implements BorrowService {
     public int delete(String ids) {
         return borrowMapper.delete(ids);
     }
+
+    @Override
+    public String userAdd(Borrow borrow) {
+        return borrowMapper.userAdd(borrow);
+    }
+
+    @Override
+    public String showInfo(Borrow borrow) {
+        return borrowMapper.showInfo(borrow);
+    }
 }

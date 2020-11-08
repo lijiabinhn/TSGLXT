@@ -16,4 +16,5 @@ public interface StudentMapper {
     public List<Student> findList(Map<String, Object> queryMap);
     public List<Student> findAll();
     public int getTotal(Map<String, Object> queryMap);
+
 }

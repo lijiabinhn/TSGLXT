@@ -13,6 +13,25 @@ public class Student {
     private String photo;
     private String sex;
     private String remark;
+    private String per;//借阅权限
+    private int num;//借阅数量
+
+
+    public String getPer() {
+        return per;
+    }
+
+    public void setPer(String per) {
+        this.per = per;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
 
     public Integer getStuId() {
         return stuId;
@@ -75,11 +94,13 @@ public class Student {
         return "Student{" +
                 "stuId=" + stuId +
                 ", stuSn='" + stuSn + '\'' +
-                ", stuCid=" + stuCid +
+                ", stuCid='" + stuCid + '\'' +
                 ", stuPw='" + stuPw + '\'' +
                 ", photo='" + photo + '\'' +
                 ", sex='" + sex + '\'' +
                 ", remark='" + remark + '\'' +
+                ", per='" + per + '\'' +
+                ", num='" + num + '\'' +
                 '}';
     }
 }

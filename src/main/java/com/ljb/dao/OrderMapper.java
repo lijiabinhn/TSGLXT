@@ -13,4 +13,6 @@ public interface OrderMapper {
     public int add(Order order);
     public int edit(Order order);
     public int delete(String ids);
+    public String userAdd(Order order);
+    public String showInfo(Order order);
 }

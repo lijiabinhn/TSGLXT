@@ -53,6 +53,8 @@
                         }
                     },
                     {field:'sex',title:'性别',width:150, sortable: true},
+                    {field:'per',title:'借阅权限',width:150, sortable: true},
+                    {field:'num',title:'借阅数量',width:150, sortable: true},
                     {field:'remark',title:'备注',width:200},
                 ]],
                 toolbar: "#toolbar"
@@ -232,6 +234,8 @@
                     $("#edit_clazzId").combobox('setValue', selectRow.stuCid);
                     $("#edit_sex").combobox('setValue', selectRow.sex);
                     $("#edit_password").textbox('setValue', selectRow.stuPw);
+                    $("#edit_per").textbox('setValue', selectRow.per);
+                    $("#edit_num").textbox('setValue', selectRow.num);
                     $("#edit_remark").textbox('setValue', selectRow.remark);
                     $("#edit-photo-preview").attr("src",selectRow.photo);
                     $("#edit_photo").val(selectRow.photo);
@@ -362,6 +366,21 @@
                     </select>
                 </td>
             </tr>
+            <tr >
+                <td>借阅权限:</td>
+                <td>
+                    <select id="add_per"  class="easyui-combobox" style="width: 200px;" name="per" data-options="required:true, missingMessage:'请选择借阅权限'">
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>借阅数量:</td>
+                <td>
+                    <input id="add_num"  class="easyui-textbox" style="width: 200px; height: 30px;" type="int" name="num" data-options="required:true, missingMessage:'请输入借阅数量'"  />
+                </td>
+            </tr>
             <tr>
                 <td>备注:</td>
                 <td><input id="add_remark" style="width: 256px; height: 180px;" class="easyui-textbox" type="text" name="remark" data-options="multiline:true"  /></td>
@@ -425,6 +444,21 @@
                         <option value="男">男</option>
                         <option value="女">女</option>
                     </select>
+                </td>
+            </tr>
+            <tr >
+                <td>借阅权限:</td>
+                <td>
+                    <select id="edit_per"  class="easyui-combobox" style="width: 200px;" name="per" data-options="required:true, missingMessage:'请选择借阅权限'">
+                        <option value="是">是</option>
+                        <option value="否">否</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>借阅数量:</td>
+                <td>
+                    <input id="edit_num"  class="easyui-textbox" style="width: 200px; height: 30px;" type="int" name="num" data-options="required:true, missingMessage:'请输入借阅数量'"  />
                 </td>
             </tr>
             <tr>
