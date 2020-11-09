@@ -39,4 +39,9 @@ public class LoseServiceImpl implements LoseService {
     public int delete(String ids) {
         return loseMapper.delete(ids);
     }
+
+    @Override
+    public String userAdd(Lose lose) {
+        return loseMapper.userAdd(lose);
+    }
 }

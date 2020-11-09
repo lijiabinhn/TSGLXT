@@ -40,4 +40,9 @@ public class ContinueServiceImpl implements ContinueService {
     public int delete(String ids) {
         return continueMapper.delete(ids);
     }
+
+    @Override
+    public String userAdd(Continue continues) {
+        return continueMapper.userAdd(continues);
+    }
 }

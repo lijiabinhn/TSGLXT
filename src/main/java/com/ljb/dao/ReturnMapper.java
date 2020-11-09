@@ -13,4 +13,5 @@ public interface ReturnMapper {
     public int add(Return returns);
     public int edit(Return returns);
     public int delete(String ids);
+    public String userAdd(Return returns);
 }

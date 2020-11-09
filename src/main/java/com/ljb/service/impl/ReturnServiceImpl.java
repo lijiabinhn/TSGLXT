@@ -39,4 +39,9 @@ public class ReturnServiceImpl implements ReturnService {
     public int delete(String ids) {
         return returnMapper.delete(ids);
     }
+
+    @Override
+    public String userAdd(Return returns) {
+        return returnMapper.userAdd(returns);
+    }
 }

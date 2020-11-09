@@ -9,6 +9,7 @@ import java.util.Map;
 @Service
 public interface BorrowService {
     public List<Borrow> findList(Map<String, Object> queryMap);
+    public List<Borrow> userList(Map<String, Object> queryMap);
     public int getTotal(Map<String, Object> queryMap);
     public int add(Borrow borrow);
     public int edit(Borrow borrow);

@@ -13,4 +13,5 @@ public interface LoseService {
     public int add(Lose lose);
     public int edit(Lose lose);
     public int delete(String ids);
+    public String userAdd(Lose lose);
 }

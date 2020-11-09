@@ -6,6 +6,11 @@
     <select id="findList" parameterType="Map" resultType="com.ljb.pojo.Return">
   		select R_NO as rNo,BookNO as bookNo,StuNO as stuNo,BorrowTime as borrowTime,ReturnTime as returnTime,StuName as stuName from returned where StuName like #{username} limit #{offset},#{pageSize}
   	</select>
+
+	<select id="userAdd" parameterType="com.ljb.pojo.Return" resultType="String">
+		call showRecordInfo(#{bookNo},#{stuNo})
+	</select>
+
     <select id="getTotal" parameterType="Map" resultType="Integer">
   		select count(R_NO) from returned where StuName like #{username}
   	</select>

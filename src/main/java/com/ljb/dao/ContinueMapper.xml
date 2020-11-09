@@ -9,6 +9,11 @@
     <!--<select id="findAll" resultType="com.ljb.pojo.Borrow">
   		select BookNO as bookNo,BookName as bookName,Author as Author,Publishment as Publish,ButTime as buyTime,Borrowed as isBorrow,Ordered as isOrder from stuborrow
   	</select>-->
+
+	<select id="userAdd" parameterType="com.ljb.pojo.Continue" resultType="String">
+		call ShowContinueInfo(#{bookNo},#{stuNo},#{delayTime})
+	</select>
+
     <select id="getTotal" parameterType="Map" resultType="Integer">
   		select count(CT_NO) from continuetimes where BookName like #{username}
   	</select>

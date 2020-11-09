@@ -4,19 +4,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ljb.dao.BookMapper">
     <select id="findList" parameterType="Map" resultType="com.ljb.pojo.Book">
-  		select BookNO as bookNo,BookName as bookName,Author as Authors,Publishment as Publish,ButTime as buyTime,Borrowed as isBorrow,Ordered as isOrder from books where BookName like #{username} limit #{offset},#{pageSize}
+  		select BookNO as bookNo,BookName as bookName,Author as authors,Publishment as publish,ButTime as buyTime,Borrowed as isBorrow,Ordered as isOrder from books where BookName like #{username} limit #{offset},#{pageSize}
   	</select>
     <select id="findAll" resultType="com.ljb.pojo.Book">
-  		select BookNO as bookNo,BookName as bookName,Author as Authors,Publishment as Publish,ButTime as buyTime,Borrowed as isBorrow,Ordered as isOrder from books
+  		select BookNO as bookNo,BookName as bookName,Author as authors,Publishment as aublish,ButTime as buyTime,Borrowed as isBorrow,Ordered as isOrder from books
   	</select>
     <select id="getTotal" parameterType="Map" resultType="Integer">
   		select count(BookNO) from books where BookName like #{username}
   	</select>
     <update id="add" parameterType="com.ljb.pojo.Book">
-  		insert into books(BookNO,BookName,Author,Publishment,ButTime,Borrowed,Ordered) values(null,#{bookName},#{Authors},#{Publish},#{buyTime},#{isBorrow},#{isOrder})
+  		insert into books(BookNO,BookName,Author,Publishment,ButTime,Borrowed,Ordered) values(null,#{bookName},#{authors},#{publish},#{buyTime},#{isBorrow},#{isOrder})
   	</update>
     <update id="edit" parameterType="com.ljb.pojo.Book">
-  		update books set BookName = #{bookName},Author = #{Authors},Publishment = #{Publish},ButTime = #{buyTime},Borrowed = #{isBorrow},Ordered = #{isOrder} where BookNO = #{bookNo}
+  		update books set BookName = #{bookName},Author = #{authors},Publishment = #{publish},ButTime = #{buyTime},Borrowed = #{isBorrow},Ordered = #{isOrder} where BookNO = #{bookNo}
   	</update>
     <update id="delete" parameterType="String">
   		delete from books where BookNO in (${value})

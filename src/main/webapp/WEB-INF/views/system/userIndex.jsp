@@ -23,26 +23,26 @@
                 },
                 {"menuid":"2","icon":"","menuname":"图书管理",
                     "menus":[
-                        //{"menuid":"21","menuname":"学生列表","icon":"icon-user-student","url":"../student/list"},
+                         {"menuid":"42","menuname":"借阅列表","icon":"icon-house","url":"../us/uoList"},
+
                     ]
                 },
                 {"menuid":"3","icon":"","menuname":"查看罚款",
                     "menus":[
-                        //{"menuid":"31","menuname":"图书列表","icon":"icon-world","url":"../book/list"},
+                        {"menuid":"31","menuname":"罚款列表","icon":"icon-world","url":"../us/utList"},
                     ]
                 },
                 {"menuid":"4","icon":"","menuname":"捐献图书",
                     "menus":[
-                        // {"menuid":"41","menuname":"借阅列表","icon":"icon-house","url":"../operation/borrowList"},
-                        // {"menuid":"42","menuname":"归还列表","icon":"icon-house","url":"../operation/returnList"},
-                        // {"menuid":"43","menuname":"挂失列表","icon":"icon-house","url":"../operation/loseList"},
-                        // {"menuid":"44","menuname":"续借列表","icon":"icon-house","url":"../operation/continueList"},
-                        // {"menuid":"45","menuname":"预约列表","icon":"icon-house","url":"../operation/orderList"},
+                        {"menuid":"41","menuname":"捐献图书列表","icon":"icon-house","url":"../us/ucList"},
                     ]
                 },
                 {"menuid":"5","icon":"","menuname":"个人中心",
                     "menus":[
-                        //{"menuid":"51","menuname":"交纳罚款列表","icon":"icon-house","url":"../ticket/list"},
+                        {"menuid":"51","menuname":"个人中心","icon":"icon-house","url":"../us/orderList"},
+                        // {"menuid":"52","menuname":"归还列表","icon":"icon-house","url":"../operation/returnList"},
+                        // {"menuid":"53","menuname":"挂失列表","icon":"icon-house","url":"../operation/loseList"},
+                        // {"menuid":"54","menuname":"续借列表","icon":"icon-house","url":"../operation/continueList"},
                     ]
                 },
             ]};

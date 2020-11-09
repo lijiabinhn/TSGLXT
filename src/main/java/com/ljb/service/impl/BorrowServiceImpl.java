@@ -21,6 +21,11 @@ public class BorrowServiceImpl implements BorrowService {
     }
 
     @Override
+    public List<Borrow> userList(Map<String, Object> queryMap) {
+        return borrowMapper.userList(queryMap);
+    }
+
+    @Override
     public int getTotal(Map<String, Object> queryMap) {
         return borrowMapper.getTotal(queryMap);
     }

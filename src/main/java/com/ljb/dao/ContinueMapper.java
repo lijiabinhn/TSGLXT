@@ -13,4 +13,5 @@ public interface ContinueMapper {
     public int add(Continue continues);
     public int edit(Continue continues);
     public int delete(String ids);
+    public String userAdd(Continue continues);
 }

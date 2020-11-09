@@ -9,6 +9,11 @@
     <select id="getTotal" parameterType="Map" resultType="Integer">
   		select count(LBNO) from losebooks where StuName like #{username}
   	</select>
+
+	<select id="userAdd" parameterType="com.ljb.pojo.Lose" resultType="String">
+		call ShowLoseInfo(#{bookNo},#{stuNo})
+	</select>
+
     <update id="add" parameterType="com.ljb.pojo.Lose">
   		insert into losebooks(LBNO,StuNO,StuName,BookNO,BookName,BorrowTime,LoseTime) values(null,#{stuNo},#{stuName},#{bookNo},#{bookName},#{borrowTime},#{loseTime})
   	</update>

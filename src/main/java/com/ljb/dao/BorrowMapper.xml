@@ -6,6 +6,9 @@
     <select id="findList" parameterType="Map" resultType="com.ljb.pojo.Borrow">
   		select OR_NO as orNo,StuName as stuName,StuNO as stuNo,Class as stuClazz,BookNO as bookNo,BookName as bookName,BorrowTime as borrowTime,returnTime as returnTime from stuborrow where StuName like #{username} limit #{offset},#{pageSize}
   	</select>
+	<select id="userList" parameterType="Map" resultType="com.ljb.pojo.Borrow">
+		select OR_NO as orNo,StuName as stuName,StuNO as stuNo,Class as stuClazz,BookNO as bookNo,BookName as bookName,BorrowTime as borrowTime,returnTime as returnTime from stuborrow where StuNO = #{stuId} limit #{offset},#{pageSize}
+	</select>
 	<select id="userAdd" parameterType="com.ljb.pojo.Borrow" resultType="String">
 		call ShowBorrowInfo(#{bookNo},#{stuNo})
 	</select>
