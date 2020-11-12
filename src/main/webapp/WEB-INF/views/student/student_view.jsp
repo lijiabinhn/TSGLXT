@@ -37,15 +37,6 @@
                     {field:'stuId',title:'ID',width:50, sortable: true},
                     {field:'stuSn',title:'姓名',width:150, sortable: true},
                     {field:'stuCid',title:'所属班级',width:150, sortable: true},
-                       /* formatter:function(value,index,row){
-                            for(var i=0;i<clazzList.length;i++){
-                                if(clazzList[i].clazzId == value){
-                                    return clazzList[i].name;
-                                }
-                            }
-                            return value;
-                        }
-                    },*/
                     {field:'stuPw',title:'密码',width:150},
                     {field:'photo',title:'头像',width:100,
                         formatter:function(value,index,row){
@@ -56,7 +47,7 @@
                     {field:'per',title:'借阅权限',width:150, sortable: true},
                     {field:'num',title:'借阅数量',width:150, sortable: true},
                     {field:'remark',title:'备注',width:200},
-                ]],
+            ]],
                 toolbar: "#toolbar"
             });
             //设置分页控件
@@ -289,25 +280,14 @@
 </table>
 <!-- 工具栏 -->
 <div id="toolbar">
-<%--    <c:if test="${userType == 1}">--%>
-        <div style="float: left;"><a id="add" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加</a></div>
-        <div style="float: left;" class="datagrid-btn-separator"></div>
-<%--    </c:if>--%>
+    <div style="float: left;"><a id="add" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加</a></div>
+    <div style="float: left;" class="datagrid-btn-separator"></div>
     <div style="float: left;"><a id="edit" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">修改</a></div>
     <div style="float: left;" class="datagrid-btn-separator"></div>
     <div>
-<%--        <c:if test="${userType == 1}">--%>
             <a id="delete" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-some-delete',plain:true">删除</a>
-<%--        </c:if>--%>
         学生名：<input id="search-name" class="easyui-textbox" />
-        班级编号：<input id="search-clazz-id" class="easyui-combobox" style="width: 150px;" />
-        <%--所属班级：
-        <select id="search-clazz-id" class="easyui-combobox" style="width: 150px;">
-            <option value="">全部</option>
-            <c:forEach items="${ clazzList}" var="clazz">
-                <option value="${clazz.cid }">${clazz.cname }</option>
-            </c:forEach>
-        </select>--%>
+
         <a id="search-btn" href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true">搜索</a>
     </div>
 </div>
