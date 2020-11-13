@@ -6,6 +6,11 @@
     <select id="findList" parameterType="Map" resultType="com.ljb.pojo.Lose">
   		select LBNO as lbNo,StuNO as stuNo,StuName as stuName,BookNO as bookNo,BookName as bookName,BorrowTime as borrowTime,LoseTime as loseTime from losebooks where StuName like #{username} limit #{offset},#{pageSize}
   	</select>
+
+	<select id="userList" parameterType="Map" resultType="com.ljb.pojo.Lose">
+		select LBNO as lbNo,StuNO as stuNo,StuName as stuName,BookNO as bookNo,BookName as bookName,BorrowTime as borrowTime,LoseTime as loseTime from losebooks where StuName = #{username} limit #{offset},#{pageSize}
+	</select>
+
     <select id="getTotal" parameterType="Map" resultType="Integer">
   		select count(LBNO) from losebooks where StuName like #{username}
   	</select>

@@ -39,10 +39,10 @@
                 },
                 {"menuid":"5","icon":"","menuname":"个人中心",
                     "menus":[
-                        {"menuid":"51","menuname":"个人中心","icon":"icon-house","url":"../us/uucList"},
-                        // {"menuid":"52","menuname":"归还列表","icon":"icon-house","url":"../operation/returnList"},
-                        // {"menuid":"53","menuname":"挂失列表","icon":"icon-house","url":"../operation/loseList"},
-                        // {"menuid":"54","menuname":"续借列表","icon":"icon-house","url":"../operation/continueList"},
+                        {"menuid":"51","menuname":"预约列表","icon":"icon-house","url":"../userCenter/orderList"},
+                        {"menuid":"54","menuname":"续借列表","icon":"icon-house","url":"../userCenter/continueList"},
+                        {"menuid":"52","menuname":"归还列表","icon":"icon-house","url":"../userCenter/returnList"},
+                        {"menuid":"53","menuname":"挂失列表","icon":"icon-house","url":"../userCenter/loseList"},
                     ]
                 },
             ]};

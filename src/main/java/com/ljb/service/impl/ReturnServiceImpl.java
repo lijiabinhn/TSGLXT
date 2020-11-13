@@ -21,6 +21,11 @@ public class ReturnServiceImpl implements ReturnService {
     }
 
     @Override
+    public List<Return> userList(Map<String, Object> queryMap) {
+        return returnMapper.userList(queryMap);
+    }
+
+    @Override
     public int getTotal(Map<String, Object> queryMap) {
         return returnMapper.getTotal(queryMap);
     }

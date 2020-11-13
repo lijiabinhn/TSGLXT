@@ -9,6 +9,7 @@ import java.util.Map;
 @Repository
 public interface OrderMapper {
     public List<Order> findList(Map<String, Object> queryMap);
+    public List<Order> userList(Map<String, Object> queryMap);
     public int getTotal(Map<String, Object> queryMap);
     public int add(Order order);
     public int edit(Order order);

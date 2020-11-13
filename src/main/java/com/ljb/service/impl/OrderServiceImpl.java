@@ -21,6 +21,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public List<Order> userList(Map<String, Object> queryMap) {
+        return orderMapper.userList(queryMap);
+    }
+
+    @Override
     public int getTotal(Map<String, Object> queryMap) {
         return orderMapper.getTotal(queryMap);
     }

@@ -8,9 +8,9 @@
         <result column="username" property="userName" jdbcType="VARCHAR"/>
         <result column="password" property="userPassword" jdbcType="VARCHAR"/>
     </resultMap>-->
-  <!--  <select id="findByUserName" parameterType="String" resultType="com.ljb.pojo.Ticket">
-  		select user_id as userId,user_name as userName,user_pw as userPw from userinfo where user_name = #{username} limit 1
-  	</select>-->
+	<select id="userList" parameterType="Map" resultType="com.ljb.pojo.Ticket">
+		select TiNo as ticNo,StuNO as stuNo,StuName as stuName,Class as stuClazz,Book_name as bookName,T_time as ticTime,T_money as ticMoney,moneyed as isMoney,pay_way as payWay from ticket where StuName = #{username} limit #{offset},#{pageSize}
+	</select>
     <select id="findList" parameterType="Map" resultType="com.ljb.pojo.Ticket">
   		select TiNo as ticNo,StuNO as stuNo,StuName as stuName,Class as stuClazz,Book_name as bookName,T_time as ticTime,T_money as ticMoney,moneyed as isMoney,pay_way as payWay from ticket where StuName like #{username} limit #{offset},#{pageSize}
   	</select>

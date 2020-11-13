@@ -146,6 +146,7 @@ public class SystemController {
                 ret.put("msg", "密码错误!");
                 return ret;
             }
+            Student.setUserName(username);
             request.getSession().setAttribute("student", student);
         }
         request.getSession().setAttribute("userType", type);

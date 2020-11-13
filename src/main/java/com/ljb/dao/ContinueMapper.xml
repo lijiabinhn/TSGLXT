@@ -6,9 +6,9 @@
     <select id="findList" parameterType="Map" resultType="com.ljb.pojo.Continue">
   		select CT_NO as ctNo,StuNO as stuNo,StuName as stuName,BookNO as bookNo,BookName as bookName,DelayTime as delayTime from continuetimes where StuName like #{username} limit #{offset},#{pageSize}
   	</select>
-    <!--<select id="findAll" resultType="com.ljb.pojo.Borrow">
-  		select BookNO as bookNo,BookName as bookName,Author as Author,Publishment as Publish,ButTime as buyTime,Borrowed as isBorrow,Ordered as isOrder from stuborrow
-  	</select>-->
+	<select id="userList" parameterType="Map" resultType="com.ljb.pojo.Contribute">
+		select CT_NO as ctNo,StuNO as stuNo,StuName as stuName,BookNO as bookNo,BookName as bookName,DelayTime as delayTime from continuetimes where StuName = #{username} limit #{offset},#{pageSize}
+	</select>
 
 	<select id="userAdd" parameterType="com.ljb.pojo.Continue" resultType="String">
 		call ShowContinueInfo(#{bookNo},#{stuNo},#{delayTime})

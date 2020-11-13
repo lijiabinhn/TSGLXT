@@ -10,6 +10,7 @@ import java.util.Map;
 @Service
 public interface TicketService {
     public List<Ticket> findList(Map<String, Object> queryMap);
+    public List<Ticket> userList(Map<String, Object> queryMap);
     public int getTotal(Map<String, Object> queryMap);
     public int add(Ticket ticket);
     public int edit(Ticket ticket);

@@ -252,10 +252,11 @@ public class UsController {
     ){
         Map<String, Object> ret =new HashMap<String, Object>();
         Map<String, Object> queryMap = new HashMap<String, Object>();
-        queryMap.put("username", "%"+username+"%");
+        username = Student.getUserName();
+        queryMap.put("username", username);
         queryMap.put("offset", page.getOffset());
         queryMap.put("pageSize", page.getRows());
-        ret.put("rows", borrowService.findList(queryMap));
+        ret.put("rows", borrowService.userList(queryMap));
         ret.put("total", borrowService.getTotal(queryMap));
         return ret;
     }
@@ -419,10 +420,11 @@ public class UsController {
     ){
         Map<String, Object> ret =new HashMap<String, Object>();
         Map<String, Object> queryMap = new HashMap<String, Object>();
-        queryMap.put("username", "%"+username+"%");
+        username = Student.getUserName();
+        queryMap.put("username", username);
         queryMap.put("offset", page.getOffset());
         queryMap.put("pageSize", page.getRows());
-        ret.put("rows", ticketService.findList(queryMap));
+        ret.put("rows", ticketService.userList(queryMap));
         ret.put("total", ticketService.getTotal(queryMap));
         return ret;
     }
@@ -455,10 +457,11 @@ public class UsController {
     ){
         Map<String, Object> ret =new HashMap<String, Object>();
         Map<String, Object> queryMap = new HashMap<String, Object>();
-        queryMap.put("username", "%"+username+"%");
+        username = Student.getUserName();
+        queryMap.put("username", username);
         queryMap.put("offset", page.getOffset());
         queryMap.put("pageSize", page.getRows());
-        ret.put("rows", contributeService.findList(queryMap));
+        ret.put("rows", contributeService.userList(queryMap));
         ret.put("total", contributeService.getTotal(queryMap));
         return ret;
     }
@@ -499,36 +502,6 @@ public class UsController {
         ret.put("msg", "挂失成功!");
         return ret;
     }
-
-
-    /**
-     * 跳转到个人中心
-     * @param model
-     * @return
-     */
-
-    @RequestMapping(path = "/uucList",method = RequestMethod.GET)
-    public ModelAndView uucList(ModelAndView model){
-        model.setViewName("userCenter/userCenter_view");
-        return model;
-    }
-
-    @RequestMapping(path = "/get_uucList",method = RequestMethod.POST)
-    @ResponseBody
-    public Map<String,Object> getUserCenterList(
-            @RequestParam(value = "username",required = false,defaultValue = "") String username,
-            Page page
-    ){
-        Map<String, Object> ret =new HashMap<String, Object>();
-        Map<String, Object> queryMap = new HashMap<String, Object>();
-        queryMap.put("username", "%"+username+"%");
-        queryMap.put("offset", page.getOffset());
-        queryMap.put("pageSize", page.getRows());
-        ret.put("rows", contributeService.findList(queryMap));
-        ret.put("total", contributeService.getTotal(queryMap));
-        return ret;
-    }
-
 
 }
 

@@ -9,6 +9,7 @@ import java.util.Map;
 @Service
 public interface ReturnService {
     public List<Return> findList(Map<String, Object> queryMap);
+    public List<Return> userList(Map<String, Object> queryMap);
     public int getTotal(Map<String, Object> queryMap);
     public int add(Return returns);
     public int edit(Return returns);

@@ -21,6 +21,11 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
+    public List<Ticket> userList(Map<String, Object> queryMap) {
+        return ticketMapper.userList(queryMap);
+    }
+
+    @Override
     public int getTotal(Map<String, Object> queryMap) {
         return ticketMapper.getTotal(queryMap);
     }

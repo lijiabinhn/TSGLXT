@@ -22,6 +22,11 @@ public class ContinueServiceImpl implements ContinueService {
     }
 
     @Override
+    public List<Continue> userList(Map<String, Object> queryMap) {
+        return continueMapper.userList(queryMap);
+    }
+
+    @Override
     public int getTotal(Map<String, Object> queryMap) {
         return continueMapper.getTotal(queryMap);
     }

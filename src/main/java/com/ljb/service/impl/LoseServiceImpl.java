@@ -21,6 +21,11 @@ public class LoseServiceImpl implements LoseService {
     }
 
     @Override
+    public List<Lose> userList(Map<String, Object> queryMap) {
+        return loseMapper.userList(queryMap);
+    }
+
+    @Override
     public int getTotal(Map<String, Object> queryMap) {
         return loseMapper.getTotal(queryMap);
     }

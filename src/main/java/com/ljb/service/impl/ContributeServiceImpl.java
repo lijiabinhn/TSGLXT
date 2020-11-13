@@ -22,6 +22,11 @@ public class ContributeServiceImpl implements ContributeService {
     }
 
     @Override
+    public List<Contribute> userList(Map<String, Object> queryMap) {
+        return contributeMapper.userList(queryMap);
+    }
+
+    @Override
     public int getTotal(Map<String, Object> queryMap) {
         return contributeMapper.getTotal(queryMap);
     }

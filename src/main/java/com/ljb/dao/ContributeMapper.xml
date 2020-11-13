@@ -7,6 +7,10 @@
   		select Cb_NO as cNo,Cb_name as cName,Cb_sex as cSex,Cb_tle as cTle,Cb_book as cBook,Cb_time as cTime from contributebook where Cb_name like #{username} limit #{offset},#{pageSize}
   	</select>
 
+	<select id="userList" parameterType="Map" resultType="com.ljb.pojo.Contribute">
+		select Cb_NO as cNo,Cb_name as cName,Cb_sex as cSex,Cb_tle as cTle,Cb_book as cBook,Cb_time as cTime from contributebook where Cb_name = #{username} limit #{offset},#{pageSize}
+	</select>
+
     <select id="getTotal" parameterType="Map" resultType="Integer">
   		select count(Cb_NO) from contributebook where Cb_name like #{username}
   	</select>

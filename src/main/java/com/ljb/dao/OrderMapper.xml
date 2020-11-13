@@ -6,6 +6,11 @@
     <select id="findList" parameterType="Map" resultType="com.ljb.pojo.Order">
   		select YNO as yNo,Y_StuName as stuName,Y_StuNo as stuNo,Y_class as stuClazz,Y_BookNo as bookNo,Y_book as bookName,Y_time as orderTime,IsBorrow as isBorrow from yuyue where Y_StuName like #{username} limit #{offset},#{pageSize}
   	</select>
+
+	<select id="userList" parameterType="Map" resultType="com.ljb.pojo.Order">
+		select YNO as yNo,Y_StuName as stuName,Y_StuNo as stuNo,Y_class as stuClazz,Y_BookNo as bookNo,Y_book as bookName,Y_time as orderTime,IsBorrow as isBorrow from yuyue where Y_StuName = #{username} limit #{offset},#{pageSize}
+	</select>
+
     <select id="getTotal" parameterType="Map" resultType="Integer">
   		select count(YNO) from yuyue where Y_StuName like #{username}
   	</select>

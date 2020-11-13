@@ -16,6 +16,15 @@ public class Student {
     private String per;//借阅权限
     private int num;//借阅数量
 
+    private static String userName = null;
+
+    public static String getUserName() {
+        return userName;
+    }
+
+    public static void setUserName(String userName) {
+        Student.userName = userName;
+    }
 
     public String getPer() {
         return per;

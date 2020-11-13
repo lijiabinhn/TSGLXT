@@ -9,6 +9,7 @@ import java.util.Map;
 @Service
 public interface ContributeService {
     public List<Contribute> findList(Map<String, Object> queryMap);
+    public List<Contribute> userList(Map<String, Object> queryMap);
     public int getTotal(Map<String, Object> queryMap);
     public int add(Contribute contribute);
 }
