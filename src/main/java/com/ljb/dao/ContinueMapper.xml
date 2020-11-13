@@ -15,7 +15,7 @@
 	</select>
 
     <select id="getTotal" parameterType="Map" resultType="Integer">
-  		select count(CT_NO) from continuetimes where BookName like #{username}
+  		select count(CT_NO) from continuetimes where StuName like #{username}
   	</select>
     <update id="add" parameterType="com.ljb.pojo.Continue">
   		insert into continuetimes(CT_NO,StuNO,StuName,BookNO,BookName,DelayTime) values(null,#{stuNo},#{stuName},#{bookNo},#{bookName},#{delayTime})

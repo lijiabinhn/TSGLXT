@@ -15,7 +15,7 @@
   		select TiNo as ticNo,StuNO as stuNo,StuName as stuName,Class as stuClazz,Book_name as bookName,T_time as ticTime,T_money as ticMoney,moneyed as isMoney,pay_way as payWay from ticket where StuName like #{username} limit #{offset},#{pageSize}
   	</select>
     <select id="getTotal" parameterType="Map" resultType="Integer">
-  		select count(TiNo) from ticket where Book_name like #{username}
+  		select count(TiNo) from ticket where stuName like #{username}
   	</select>
     <insert id="add" parameterType="com.ljb.pojo.Ticket">
   		insert into ticket(TiNo,StuNO,StuName,Class,Book_name,T_time,T_money,moneyed,pay_way) values(null,#{stuNo},#{stuName},#{stuClazz},#{bookName},#{ticTime},#{ticMoney},#{isMoney},#{payWay})

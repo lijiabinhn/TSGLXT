@@ -19,7 +19,7 @@
   		select OR_NO as orNo,StuName as stuName,StuNO as stuNo,Class as stuClazz,BookNO as bookNo,BookName as bookName,BorrowTime as borrowTime,returnTime as returnTime from stuborrow where StuName = #{stuSn}
   	</select>
     <select id="getTotal" parameterType="Map" resultType="Integer">
-  		select count(OR_NO) from stuborrow where BookName like #{username}
+  		select count(OR_NO) from stuborrow where StuName like #{username}
   	</select>
     <update id="add" parameterType="com.ljb.pojo.Borrow">
   		insert into stuborrow(OR_NO,StuName,StuNO,Class,BookNO,BookName,BorrowTime,returnTime) values(null,#{stuName},#{stuNo},#{stuClazz},#{bookNo},#{bookName},#{borrowTime},#{returnTime})
