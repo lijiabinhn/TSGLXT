@@ -60,7 +60,6 @@ public class faceController extends HttpServlet {
             pw.write(msg);
             pw.close();
         }
-
     }
 
     @Override
