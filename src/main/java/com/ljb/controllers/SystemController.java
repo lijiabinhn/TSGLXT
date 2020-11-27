@@ -50,6 +50,13 @@ public class SystemController {
         model.setViewName("system/login");
         return model;
     }
+    @RequestMapping(path = "/faceLogin",method = RequestMethod.GET)
+    public ModelAndView faceLogin(ModelAndView model)
+    {
+        model.setViewName("system/faceLogin");
+        return model;
+    }
+
     //生成验证码
     @RequestMapping(path = "/get_cpacha",method = RequestMethod.GET)
     public void getCpacha(HttpServletRequest request,

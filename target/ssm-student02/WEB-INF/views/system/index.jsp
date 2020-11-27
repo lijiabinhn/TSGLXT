@@ -6,8 +6,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>学生信息管理系统|管理员后台</title>
-    <link rel="shortcut icon" href="favicon.ico"/>
-	<link rel="bookmark" href="favicon.ico"/>
+    <link rel="shortcut icon" href="../favicon.ico"/>
+	<link rel="bookmark" href="../favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="../easyui/css/default.css" />
     <link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css" />
     <link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css" />

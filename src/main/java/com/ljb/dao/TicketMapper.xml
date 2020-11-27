@@ -8,6 +8,9 @@
         <result column="username" property="userName" jdbcType="VARCHAR"/>
         <result column="password" property="userPassword" jdbcType="VARCHAR"/>
     </resultMap>-->
+
+
+
 	<select id="userList" parameterType="Map" resultType="com.ljb.pojo.Ticket">
 		select TiNo as ticNo,StuNO as stuNo,StuName as stuName,Class as stuClazz,Book_name as bookName,T_time as ticTime,T_money as ticMoney,moneyed as isMoney,pay_way as payWay from ticket where StuName = #{username} limit #{offset},#{pageSize}
 	</select>

@@ -1,5 +1,6 @@
 package com.ljb.controllers;
 
+import com.alipay.demo.trade.Main;
 import com.ljb.page.Page;
 import com.ljb.pojo.*;
 import com.ljb.service.*;
@@ -428,6 +429,46 @@ public class UsController {
         ret.put("total", ticketService.getTotal(queryMap));
         return ret;
     }
+
+    @RequestMapping(path="/goPay",method=RequestMethod.POST)
+    @ResponseBody
+    public Map<String, String> goPay(Ticket ticket){
+        Map<String, String> ret = new HashMap<String, String>();
+        System.out.println("交罚款啦！");
+        /*if(StringUtils.isEmpty(ticket.getStuNo())){
+            ret.put("type", "error");
+            ret.put("msg", "请输入学号！");
+            return ret;
+        }
+        if(StringUtils.isEmpty(ticket.getStuName())){
+            ret.put("type", "error");
+            ret.put("msg", "请输入姓名！");
+            return ret;
+        }
+        *//*if(student.getStuCid() == 0){
+            ret.put("type", "error");
+            ret.put("msg", "请输入班级Id");
+            return ret;
+        }*//*
+        *//*if(isExist(student.getStuSn(), student.getStuId())){
+            ret.put("type", "error");
+            ret.put("msg", "该用户已存在!");
+            return ret;
+        }*//*
+        // student.setStuSn(StringUtil.generateSn("S", ""));
+        int i = ticketService.edit(ticket);
+        if(i<0){
+            ret.put("type", "error");
+            ret.put("msg", "执行出错！");
+            return ret;
+        }*/
+        new Main();
+        ret.put("type", "success");
+        ret.put("msg", "修改成功！");
+        return ret;
+    }
+
+
 
 
     /**

@@ -6,8 +6,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>学生信息管理系统|管理员后台</title>
-    <link rel="shortcut icon" href="favicon.ico"/>
-	<link rel="bookmark" href="favicon.ico"/>
+    <link rel="shortcut icon" href="../favicon.ico"/>
+	<link rel="bookmark" href="../favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="../easyui/css/default.css" />
     <link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css" />
     <link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css" />
@@ -65,7 +65,7 @@
         background: #7f99be;
         line-height: 20px;color: #fff; font-family: Verdana, 微软雅黑,黑体">
         <span style="float:right; padding-right:20px;" class="head"><span style="color:red; font-weight:bold;">${user.userName}&nbsp;</span>您好&nbsp;&nbsp;&nbsp;<a href="login_out" id="loginOut">安全退出</a></span>
-        <span style="padding-left:10px; font-size: 16px; ">学生信息管理系统</span>
+        <span style="padding-left:10px; font-size: 16px; ">管理员后台管理系统</span>
     </div>
     <div region="south" split="true" style="height: 30px; background: #D2E0F2; ">
         <div class="footer">Copyright &copy; version 3.0</div>

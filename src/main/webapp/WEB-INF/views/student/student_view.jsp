@@ -34,18 +34,18 @@
                 remoteSort: false,
                 columns: [[
                     {field:'chk',checkbox: true,width:50},
-                    {field:'stuId',title:'ID',width:50, sortable: true},
+                    {field:'stuId',title:'ID',width:100, sortable: true},
                     {field:'stuSn',title:'姓名',width:150, sortable: true},
                     {field:'stuCid',title:'所属班级',width:150, sortable: true},
                     {field:'stuPw',title:'密码',width:150},
-                    {field:'photo',title:'头像',width:100,
+                    {field:'photo',title:'头像',width:150,
                         formatter:function(value,index,row){
                             return '<img src='+value+' width="100px" />';
                         }
                     },
-                    {field:'sex',title:'性别',width:150, sortable: true},
-                    {field:'per',title:'借阅权限',width:150, sortable: true},
-                    {field:'num',title:'借阅数量',width:150, sortable: true},
+                    {field:'sex',title:'性别',width:100, sortable: true},
+                    {field:'per',title:'借阅权限',width:100, sortable: true},
+                    {field:'num',title:'借阅数量',width:100, sortable: true},
                     {field:'remark',title:'备注',width:200},
             ]],
                 toolbar: "#toolbar"

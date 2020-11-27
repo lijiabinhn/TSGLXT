@@ -17,7 +17,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         String url = request.getRequestURI();
         User user = (User) request.getSession().getAttribute("user");
         Student student = (Student) request.getSession().getAttribute("student");
-        if(user == null && student==null){
+        if(user == null && student==null && Student.getUserName()==null){
             //拦截器
             if("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))){
                 //ajax����

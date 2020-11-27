@@ -15,8 +15,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="shortcut icon" href="favicon.ico"/>
-    <link rel="bookmark" href="favicon.ico"/>
+    <link rel="shortcut icon" href="../favicon.ico"/>
+    <link rel="bookmark" href="../favicon.ico"/>
     <link href="../h-ui/css/H-ui.min.css" rel="stylesheet" type="text/css" />
     <link href="../h-ui/css/H-ui.login.css" rel="stylesheet" type="text/css" />
     <link href="../h-ui/lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
@@ -117,6 +117,7 @@
             <div class="row">
                 <div class="formControls col-8 col-offset-3">
                     <input id="submitBtn" type="button" class="btn btn-success radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;" >
+                    <input id="faceLogin" onclick="window.parent.location.href='faceLogin'" type="button" class="btn btn-success radius size-L" value="&nbsp;人&nbsp;&nbsp;&nbsp;&nbsp;脸&nbsp;" >
                 </div>
             </div>
         </form>

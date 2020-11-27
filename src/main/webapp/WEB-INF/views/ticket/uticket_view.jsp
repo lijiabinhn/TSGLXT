@@ -160,7 +160,7 @@
 
                                 $.ajax({
                                     type: "post",
-                                    url: "edit",
+                                    url: "goPay",
                                     data: data,
                                     dataType:'json',
                                     success: function(data){
@@ -191,7 +191,6 @@
                     $("#edit_ticTime").textbox('setValue', selectRow.ticTime);
                     $("#edit_ticMoney").textbox('setValue', selectRow.ticMoney);
                     $("#edit_isMoney").textbox('setValue', selectRow.isMoney);
-                    $("#edit_payWay").textbox('setValue', selectRow.payWay);
                 }
             });
 
@@ -283,12 +282,7 @@
                     <input id="edit_isMoney"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="isMoney" readonly data-options="required:true"  />
                 </td>
             </tr>
-            <tr >
-                <td>付款方式:</td>
-                <td>
-                    <input id="edit_payWay"  class="easyui-textbox" style="width: 200px; height: 30px;" type="text" name="payWay" readonly data-options="required:true"  />
-                </td>
-            </tr>
+
         </table>
     </form>
 </div>
