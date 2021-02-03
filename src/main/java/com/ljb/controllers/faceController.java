@@ -1,8 +1,10 @@
 package com.ljb.controllers;
 
 import com.ljb.pojo.Student;
-import com.wln.util.FaceUtil;
-import com.wln.util.ImageUtils;
+import com.ljb.util.FaceUtil;
+import com.ljb.util.ImageUtils;
+
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

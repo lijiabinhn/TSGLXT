@@ -22,7 +22,8 @@ import javax.net.ssl.SSLException;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.wln.util.HTTPUtil;
+
+import com.ljb.util.HTTPUtil;
 
 public class FaceUtil {
 	

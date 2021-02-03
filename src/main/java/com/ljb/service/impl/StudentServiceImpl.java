@@ -14,6 +14,7 @@ public class StudentServiceImpl implements StudentService {
     @Autowired(required = false)
     private StudentMapper studentMapper;
 
+    @Override
     public Student findByUserName(String username) {
         return studentMapper.findByUserName(username);
     }

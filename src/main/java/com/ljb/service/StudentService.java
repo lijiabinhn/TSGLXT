@@ -1,6 +1,7 @@
 package com.ljb.service;
 
 import com.ljb.pojo.Student;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

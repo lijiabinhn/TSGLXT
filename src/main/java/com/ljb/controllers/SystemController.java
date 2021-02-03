@@ -141,21 +141,22 @@ public class SystemController {
         }
         if (type == 2) {
             //学生用户登录
-            Student student = studentService.findByUserName(username);
-            System.out.println(student);
-            if (student == null) {
-                ret.put("type", "error");
-                ret.put("msg","该用户不存在!");
-                return ret;
-            }
-            if (!password.equals(student.getStuPw())) {
-                ret.put("type", "error");
-                ret.put("msg", "密码错误!");
-                return ret;
-            }
-            Student.setUserName(username);
-            request.getSession().setAttribute("student", student);
-        }
+            System.out.println(username);
+                    Student student = studentService.findByUserName(username);
+                    System.out.println(student);
+                if (student == null) {
+                    ret.put("type", "error");
+                    ret.put("msg", "该用户不存在!");
+                    return ret;
+                }
+                if (!password.equals(student.getStuPw())) {
+                    ret.put("type", "error");
+                    ret.put("msg", "密码错误!");
+                    return ret;
+                }
+                Student.setUserName(username);
+                request.getSession().setAttribute("student", student);
+                }
         request.getSession().setAttribute("userType", type);
         ret.put("type", "success");
         ret.put("msg", "登录成功!");

@@ -1,6 +1,6 @@
 package com.ljb.util;
 
-import com.wln.util.FaceUtil;
+import com.ljb.util.FaceUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;

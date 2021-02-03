@@ -159,26 +159,10 @@
                                 var data = $("#editForm").serialize();
 
                                 $.ajax({
-                                    type: "post",
+                                    type: "get",
                                     url: "goPay",
                                     data: data,
                                     dataType:'json',
-                                    success: function(data){
-                                        if(data.type == "success"){
-                                            $.messager.alert("消息提醒","修改成功!","info");
-                                            //关闭窗口
-                                            $("#editDialog").dialog("close");
-                                            $("#edit_stuNo").textbox('setValue', "");
-                                            $("#edit_stuName").textbox('setValue', "");
-                                            //重新刷新页面数据
-                                            $('#dataList').datagrid("reload");
-                                            $('#dataList').datagrid("uncheckAll");
-
-                                        } else{
-                                            $.messager.alert("消息提醒",data.msg,"warning");
-                                            return;
-                                        }
-                                    }
                                 });
                             }
                         }

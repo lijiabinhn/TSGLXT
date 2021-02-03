@@ -4,4 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <!-- 暂时不需做任何配置 -->
+    <!--<settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+    
+    <mappers>
+        <package name="com.ljb.dao"/>
+    </mappers>-->
 </configuration>

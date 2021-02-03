@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ljb.dao.StudentMapper">
     <select id="findByUserName" parameterType="String" resultType="com.ljb.pojo.Student">
-  		select stu_id as stuId,stu_sn as stuSn,stu_cid as stuCid,stu_pw as stuPw,stu_p as photo,stu_sex as sex,Permitted as per,b_number as num,stu_m as remark from student1 where stu_sn = #{name}
+  		select stu_id as stuId,stu_sn as stuSn,stu_cid as stuCid,stu_pw as stuPw,stu_p as photo,stu_sex as sex,Permitted as per,b_number as num,stu_m as remark from student1 where stu_sn = #{stuSn}
   	</select>
     <insert id="add" parameterType="com.ljb.pojo.Student">
   		insert into student1(stu_sn,stu_cid,stu_pw,stu_p,stu_sex,Permitted,b_number,stu_m) values(#{stuSn},#{stuCid},#{stuPw},#{photo},#{sex},#{per},#{num},#{remark})

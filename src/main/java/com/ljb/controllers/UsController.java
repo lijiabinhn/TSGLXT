@@ -1,6 +1,5 @@
 package com.ljb.controllers;
 
-import com.alipay.demo.trade.Main;
 import com.ljb.page.Page;
 import com.ljb.pojo.*;
 import com.ljb.service.*;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.xml.namespace.QName;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -430,42 +428,25 @@ public class UsController {
         return ret;
     }
 
-    @RequestMapping(path="/goPay",method=RequestMethod.POST)
-    @ResponseBody
-    public Map<String, String> goPay(Ticket ticket){
-        Map<String, String> ret = new HashMap<String, String>();
-        System.out.println("交罚款啦！");
-        /*if(StringUtils.isEmpty(ticket.getStuNo())){
-            ret.put("type", "error");
-            ret.put("msg", "请输入学号！");
-            return ret;
+    /**
+     * 跳转到支付宝支付页面
+     * @param
+     * @return
+     */
+
+    @RequestMapping(path="/goPay",method=RequestMethod.GET)
+    public ModelAndView goPay(ModelAndView model){
+        System.out.println("开始支付了。。。");
+        model.setViewName("/aliPay/index");
+
+        /*System.out.println("开始支付了。。。");
+        try {
+            response.sendRedirect("src/main/webapp/WEB-INF/views/aliPay/index.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        if(StringUtils.isEmpty(ticket.getStuName())){
-            ret.put("type", "error");
-            ret.put("msg", "请输入姓名！");
-            return ret;
-        }
-        *//*if(student.getStuCid() == 0){
-            ret.put("type", "error");
-            ret.put("msg", "请输入班级Id");
-            return ret;
-        }*//*
-        *//*if(isExist(student.getStuSn(), student.getStuId())){
-            ret.put("type", "error");
-            ret.put("msg", "该用户已存在!");
-            return ret;
-        }*//*
-        // student.setStuSn(StringUtil.generateSn("S", ""));
-        int i = ticketService.edit(ticket);
-        if(i<0){
-            ret.put("type", "error");
-            ret.put("msg", "执行出错！");
-            return ret;
-        }*/
-        new Main();
-        ret.put("type", "success");
-        ret.put("msg", "修改成功！");
-        return ret;
+        //return "success";*/
+        return model;
     }
 
 
