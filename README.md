@@ -9,11 +9,11 @@ Tomcat 8.5.47
 
 # 三、功能展示
 ## 1、首页
-![image](https://github.com/lijiabinhn/TSGLXT/blob/master/images/sy.png)
+![首页展示](https://github.com/lijiabinhn/TSGLXT/blob/master/images/sy.png)
 ## 2、管理员界面
-![image](https://github.com/lijiabinhn/TSGLXT/blob/master/images/gly.png)
+![管理员界面展示](https://github.com/lijiabinhn/TSGLXT/blob/master/images/gly.png)
 ## 3、用户界面
-![image](https://github.com/lijiabinhn/TSGLXT/blob/master/images/xs.png)
+![用户界面展示](https://github.com/lijiabinhn/TSGLXT/blob/master/images/xs.png)
 # 四、如何使用
 
 
