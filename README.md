@@ -14,7 +14,7 @@ Tomcat 8.5.47
 ![管理员界面展示](https://github.com/lijiabinhn/TSGLXT/blob/master/images/gly.png)
 ## 3、用户界面
 ![用户界面展示](https://github.com/lijiabinhn/TSGLXT/blob/master/images/xs.png)
-# 四、如何使用
+
 
 
 
